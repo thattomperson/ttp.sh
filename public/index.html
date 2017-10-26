@@ -71,8 +71,17 @@
                 0% {
                     opacity: 0;
                 }
+                1% {
+                    opacity: 1;
+                }
                 50%  {
                     opacity: 1;
+                }
+                51% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 0;
                 }
             }
             @keyframes textShadow {
@@ -186,6 +195,6 @@
         </style>
     </head>
     <body class="crt">
-        <h1>Hello Friend.<span class="cursor">|</span></h1>
+        <h1>Hello Friend.<span class="cursor">&block;</span></h1>
     </body>
 </html>
