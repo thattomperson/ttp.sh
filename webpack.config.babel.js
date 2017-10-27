@@ -26,7 +26,10 @@ export default {
     plugins: [
         new CopyWebpackPlugin([{from: './src/static'}]),
         new HtmlWebpackPlugin(),
-        new FaviconsWebpackPlugin('./src/resources/logo.jpg'),
+        new FaviconsWebpackPlugin({
+            title: 'fsociety',
+            filename: './src/resources/logo.jpg'
+        }),
         new ExtractTextPlugin("styles.css"),
     ]
 }
