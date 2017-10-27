@@ -38,5 +38,5 @@ quoteText.push(`${second}&nbsp;${last}`);
 
 quoteText = quoteText.join(' ')
 
-q.innerText = quoteText
+q.innerHTML = quoteText
 a.innerText = quote[1]
