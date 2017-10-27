@@ -1,0 +1,29 @@
+import './resources/styles.css'
+
+
+const mount = document.createElement('div')
+document.body.appendChild(mount)
+
+const content = `<div class="crt">
+    <div style="max-width: 50%">
+        <h1>"<span id="quote"></span>"<span class="cursor">&block;</span></h1>
+        <h2 style="float: right">-- <span id="author"></span></h2>
+    </div>
+</div>
+`
+
+mount.innerHTML = content
+
+
+
+var q = document.getElementById('quote')
+var a = document.getElementById('author')
+var quotes = [
+    ['Hello, friend. Hello, friend?', 'Elliot Alderson'],
+    ['If you pull the right strings, a puppet will dance any way you desire.', 'Whiterose']
+];
+
+var quote = quotes[Math.floor(Math.random()*quotes.length)];
+
+q.innerText = quote[0]
+a.innerText = quote[1]

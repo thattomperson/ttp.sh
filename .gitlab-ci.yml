@@ -4,7 +4,8 @@ image: node:latest
 
 pages:
   script:
-    - echo hi
+    - npm install
+    - npm run build
   artifacts:
     paths:
     - public
