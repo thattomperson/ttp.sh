@@ -29,5 +29,14 @@ var quotes = [
 
 var quote = quotes[Math.floor(Math.random()*quotes.length)];
 
-q.innerText = quote[0]
+var quoteText = quote[0]
+
+quoteText = quoteText.split(' ')
+last = quoteText.pop()
+second = quoteText.pop()
+quoteText.push(`${second}&nbsp;${last}`);
+
+quoteText = quoteText.join(' ')
+
+q.innerText = quoteText
 a.innerText = quote[1]
