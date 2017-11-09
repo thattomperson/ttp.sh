@@ -10,14 +10,11 @@ const content = `<div class="crt">
         <h2 style="float: right">-- <span id="author"></span></h2>
     </div>
 </div>
-`
+`;
+mount.innerHTML = content;
 
-mount.innerHTML = content
-
-
-
-var q = document.getElementById('quote')
-var a = document.getElementById('author')
+var q = document.getElementById('quote');
+var a = document.getElementById('author');
 var quotes = [
     ['Hello, friend. Hello, friend?', 'Elliot Alderson'],
     ['If you pull the right strings, a puppet will dance any way you desire.', 'Whiterose'],
@@ -29,14 +26,14 @@ var quotes = [
 
 var quote = quotes[Math.floor(Math.random()*quotes.length)];
 
-var quoteText = quote[0]
+var quoteText = quote[0];
 
-quoteText = quoteText.split(' ')
-var last = quoteText.pop()
-var second = quoteText.pop()
+quoteText = quoteText.split(' ');
+var last = quoteText.pop();
+var second = quoteText.pop();
 quoteText.push(`${second}&nbsp;${last}`);
 
-quoteText = quoteText.join(' ')
+quoteText = quoteText.join(' ');
 
-q.innerHTML = quoteText
-a.innerText = quote[1]
+q.innerHTML = quoteText;
+a.innerText = quote[1];
