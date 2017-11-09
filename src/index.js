@@ -6,7 +6,7 @@ document.body.appendChild(mount)
 
 const content = `<div class="crt">
     <div style="max-width: 50%">
-        <h1>"<span id="quote"></span>"<span class="cursor">&block;</span></h1>
+        <h1>"<span id="quote"></span><span class="cursor">&block;</span></h1>
         <h2 style="float: right">-- <span id="author"></span></h2>
     </div>
 </div>
