@@ -48,10 +48,48 @@ body {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.section {
   color: #333;
   background-color: #fff;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 50% 50%;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 33.3333% 33.3333% 33.3334%;
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+.projects-title {
+  grid-column-start: 2;
+}
+
+@media (max-width: 900px) {
+  .section {
+    grid-template-columns: 100%;
+  }
+  .projects-title {
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+
+  .projects-grid {
+    grid-row-start: 2;
+  }
+}
+
+.section:nth-child(1) {
+  min-height: 80vh;
+}
+
+.section:nth-child(even) {
+  color: #fff;
+  background-color: #333;
 }
 
 /* Portrait and Landscape */
@@ -90,15 +128,33 @@ body {
   background-size: cover;
 }
 
-.clip-text:before,
-.clip-text:after {
-  position: absolute;
-  content: "";
+.clip-text_smaller {
+  font-size: 4em;
 }
 
 /* Background image from http://thepatternlibrary.com/ and http://lorempixel.com */
 .clip-text_one {
   background-image: url("http://hd.wallpaperswide.com/thumbs/abstract_wallpaper_for_mac-t2.jpg");
+}
+
+.projects-grid img {
+  transition: transform 0.2s;
+}
+
+.projects-grid img:hover {
+  transform: scale(1.1);
+}
+
+.footer {
+  text-align: center;
+  background: #222;
+  color: #fff;
+  min-height: 100px;
+  display: grid;
+}
+.footer > div {
+  display: inline;
+  margin: auto;
 }
 
 /**
