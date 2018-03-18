@@ -134,7 +134,7 @@ body {
 
 /* Background image from http://thepatternlibrary.com/ and http://lorempixel.com */
 .clip-text_one {
-  background-image: url("http://hd.wallpaperswide.com/thumbs/abstract_wallpaper_for_mac-t2.jpg");
+  background-image: url("./resources/bg.jpg");
 }
 
 .projects-grid img {

@@ -21,6 +21,10 @@ module.exports = {
         test: /\.css$/,
         use: [prod ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'postcss-loader'],
       },
+      {
+        test: /\.jpg$/,
+        use: 'url-loader',
+      },
     ],
   },
   plugins: [
