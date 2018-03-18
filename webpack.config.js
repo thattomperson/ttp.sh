@@ -7,7 +7,7 @@ const prod = process.argv.indexOf('production') !== -1;
 
 module.exports = {
   output: {
-    filename: '[name].js',
+    filename: prod ? '[name].[hash].js' : '[name].js',
     path: path.resolve('public'),
   },
   module: {
@@ -32,5 +32,7 @@ module.exports = {
 };
 
 if (prod) {
-  module.exports.plugins.push(new MiniCssExtractPlugin());
+  module.exports.plugins.push(new MiniCssExtractPlugin({
+    filename: '[name].[hash].css',
+  }));
 }

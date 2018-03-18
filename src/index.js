@@ -16,7 +16,7 @@ form.addEventListener('submit', (e) => {
     data[field.name] = field.value;
   }
 
-  const s = swal({
+  swal({
     title: 'Sending message',
     text: 'One second please',
     onOpen: () => {
