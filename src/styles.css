@@ -1,0 +1,84 @@
+/* 
+  Based from this article from Divya Manian - 
+  http://nimbupani.com/using-background-clip-for-text-with-css-fallback.html
+*/
+
+@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:700");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+:before,
+:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #333;
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+/* Portrait and Landscape */
+@media (max-device-width: 970px) {
+  body {
+    display: grid;
+    grid-template-columns: 100%;
+  }
+}
+
+.wrapper {
+  margin: auto;
+}
+
+/* Clip text element */
+.clip-text {
+  font-family: "Nanum Gothic Coding", monospace;
+  font-wieght: 700;
+  text-align: center;
+  letter-spacing: 1rem;
+  text-rendering: geometricPrecision;
+  font-size: 6em;
+  font-weight: bold;
+  line-height: 1;
+  position: relative;
+  display: inline-block;
+  margin: 0.25em;
+  padding: 0.5em 0.75em;
+  text-align: center;
+  /* Color fallback */
+  color: #fff;
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.clip-text:before,
+.clip-text:after {
+  position: absolute;
+  content: "";
+}
+
+/* Background image from http://thepatternlibrary.com/ and http://lorempixel.com */
+.clip-text_one {
+  background-image: url("http://hd.wallpaperswide.com/thumbs/abstract_wallpaper_for_mac-t2.jpg");
+}
+
+.col-2 {
+  width: 50%;
+}
