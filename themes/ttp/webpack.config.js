@@ -8,7 +8,8 @@ const prod = process.argv.indexOf('production') !== -1;
 module.exports = {
   output: {
     filename: prod ? '[name].[hash].js' : '[name].js',
-    path: path.resolve('public'),
+    path: path.resolve('static'),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -30,8 +31,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.ejs',
+      filename: '../layouts/index.html',
     }),
-    new CopyWebpackPlugin([{ from: 'src/static', to: '.' }]),
   ],
 };
 
