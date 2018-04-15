@@ -1,15 +1,12 @@
-
-
 all: theme public;
 
-theme: themes/ttp;
+theme: layout/partials/head.html;
 
-themes/%: themes/%/node_modules themes/%/src/*
-	cd $@; npm run prod;
-	touch $@;
+layout/partials/head.html: node_modules
+	npm run prod;
 
-themes/%/node_modules: themes/%/package.json
-	cd $@/..; npm install;	
+node_modules: package.json package-lock.json
+	npm install;	
 	touch $@;
 
 public:

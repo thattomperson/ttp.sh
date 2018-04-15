@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="section">
+  <div class="wrapper">
+    {{ $original := .Resources.GetMatch "logo" }}
+    <img src="{{ $original.RelPermalink }}">
+  </div>
+  <div class="wrapper projects-title">
+    <div class="clip-text clip-text_one clip-text_smaller">
+      <div>{{ .Page.Title }}</div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="wrapper">
+    {{ .Content }}
+  </div>
+</div>
+{{ end }}

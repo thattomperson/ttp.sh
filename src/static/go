@@ -1,7 +1,0 @@
-#! /bin/sh
-
-TMP=$(mktemp)
-
-curl -L https://github.com/ThatTomPerson/project-layout/archive/master.zip > $TMP;
-unzip -d . "$TMP" && f=(./*) && mv ./*/* ./*/.* . && rmdir "${f[@]}";
-rm -f $TMP;

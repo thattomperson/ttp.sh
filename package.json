@@ -7,7 +7,7 @@
     "serve": "webpack-dev-server --mode development",
     "watch": "webpack --mode development --watch",
     "dev": "webpack --mode development",
-    "preprod": "rm -rf static/*",
+    "preprod": "rm -rf static/{css,js}",
     "prod": "webpack --mode production"
   },
   "author": "",
