@@ -11,8 +11,13 @@ resources:
 ---
 
 # Install
+
 ```bash
 $ brew install thattomperson/tap/spotigo
+```
+
+```bash
+$ curl -L ttp.sh/spotigo/install | bash
 ```
 
 content is awesome

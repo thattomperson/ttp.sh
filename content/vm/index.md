@@ -10,4 +10,13 @@ resources:
     src: logo.png
 ---
 
-content is awesome
+
+# Install
+
+```bash
+$ brew install thattomperson/tap/vm
+```
+
+```bash
+$ curl -L ttp.sh/vm/install | bash
+```
