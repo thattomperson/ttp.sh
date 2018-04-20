@@ -78,28 +78,23 @@ h1, h2, h3, h4, h5, h6 {
   @apply my-2; 
 }
 
-.platform-macos .platform-btn.platform-btn-macos,
-.platform-linux .platform-btn.platform-btn-linux,
-.platform-windows .platform-btn.platform-btn-windows {
-  @apply border-blue bg-blue text-white;
-}
-.platform-btn.platform-btn-macos:hover,
-.platform-btn.platform-btn-linux:hover,
-.platform-btn.platform-btn-windows:hover {
-  @apply border-grey-lighter bg-grey-lighter;
+.btn {
+  @apply bg-transparent text-red font-semibold py-2 px-4 border border-red rounded;
 }
 
-.platform-macos .platform-btn.platform-btn-macos:hover,
-.platform-linux .platform-btn.platform-btn-linux:hover,
-.platform-windows .platform-btn.platform-btn-windows:hover {
-  @apply border-blue bg-blue;
+.btn:hover {
+  @apply bg-red text-white border-transparent;
 }
 
-.platform-btn {
-  @apply inline-block border border-white rounded text-blue py-1 px-3
+.btn-active {
+  @apply bg-red text-white border-transparent;
 }
-.platform-btn {
-  @apply border-grey-lighter bg-grey-lighter;
+
+.platform-macos .platform-btn-macos,
+.platform-linux .platform-btn-linux,
+.platform-windows .platform-btn-windows,
+.btn.active {
+  @apply btn-active;
 }
 
 body .platform-macos,
