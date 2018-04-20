@@ -1,9 +1,10 @@
 all: theme public;
 
-theme: layout/partials/head.html;
+theme: static/css;
 
-layout/partials/head.html: node_modules
+static/css: node_modules
 	npm run prod;
+	hugo gen chromastyles --style=monokai > static/css/monokai.css
 
 node_modules: package.json package-lock.json
 	npm install;	

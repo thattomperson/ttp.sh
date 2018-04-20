@@ -26,6 +26,7 @@
 @tailwind components;
 
 @import url("https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:700");
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:500');
 
 * {
   margin: 0;
@@ -50,64 +51,31 @@ body {
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.section {
-  color: #333;
-  background-color: #fff;
-  display: grid;
-  grid-template-columns: 50% 50%;
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 33.3333% 33.3333% 33.3334%;
-  grid-column-start: 1;
-  grid-row-start: 1;
+.highlight {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
 }
 
-.projects-title {
-  grid-column-start: 2;
+.highlight pre {
+  padding: 1rem;
 }
 
-@media (max-width: 900px) {
-  .section {
-    grid-template-columns: 100%;
-  }
-  .projects-title {
-    grid-column-start: 1;
-    grid-row-start: 1;
-  }
-
-  .projects-grid {
-    grid-row-start: 2;
-  }
+.highlight pre > code {
+  @apply w-1/2 m-auto block;
 }
 
-.section:nth-child(1) {
-  min-height: 80vh;
-}
-
-.section:nth-child(even) {
-  color: #fff;
-  background-color: #333;
-}
-
-/* Portrait and Landscape */
-@media (max-device-width: 970px) {
-  body {
-    display: grid;
-    grid-template-columns: 100%;
-  }
-}
-
-.wrapper {
-  margin: auto;
+.content > * {
+  @apply my-2; 
 }
 
 /* Clip text element */
 .clip-text {
   font-family: "Nanum Gothic Coding", monospace;
-  font-wieght: 700;
   text-align: center;
   letter-spacing: 1rem;
   text-rendering: geometricPrecision;
@@ -134,27 +102,7 @@ body {
 
 /* Background image from http://thepatternlibrary.com/ and http://lorempixel.com */
 .clip-text_one {
-  background-image: url("./resources/bg.jpg");
-}
-
-.projects-grid img {
-  transition: transform 0.2s;
-}
-
-.projects-grid img:hover {
-  transform: scale(1.1);
-}
-
-.footer {
-  text-align: center;
-  background: #222;
-  color: #fff;
-  min-height: 100px;
-  display: grid;
-}
-.footer > div {
-  display: inline;
-  margin: auto;
+  background-image: url("./resources/bg1.jpg");
 }
 
 /**

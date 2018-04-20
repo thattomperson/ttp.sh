@@ -10,7 +10,7 @@ module.exports = {
     main: path.resolve("src/index")
   },
   output: {
-    filename: prod ? "js/[name].[hash].js" : "[name].js",
+    filename: prod ? "js/[name].[hash].js" : "js/[name].js",
     path: path.resolve("static"),
     publicPath: "/"
   },
@@ -38,7 +38,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.ejs",
-      filename: "../layouts/partials/head.html"
+      filename: "../layouts/_default/baseof.html"
     })
   ]
 };
