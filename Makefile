@@ -2,7 +2,7 @@ all: theme public;
 
 theme: static/css;
 
-static/css: node_modules
+static/css:
 	npm run prod;
 	hugo gen chromastyles --style=monokai > static/css/monokai.css
 
