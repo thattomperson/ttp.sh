@@ -140,13 +140,17 @@ body.platform-windows .platform-windows {
 }
 
 .bg-red-gradient {
-  
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   background: rgb(241,78,92);
   background: 
-  url(https://www.toptal.com/designers/subtlepatterns/patterns/funky-lines.png),
-  linear-gradient(90deg, rgba(241,78,92,1) 0%, rgba(190,50,73,1) 44%, rgba(241,78,92,1) 97%);
+    url(https://www.toptal.com/designers/subtlepatterns/patterns/funky-lines.png),
+    linear-gradient(90deg, rgba(241,78,92,1) 0%, rgba(190,50,73,1) 44%, rgba(241,78,92,1) 97%);
   
   background-blend-mode: multiply;
+}
+
+.hero-shadow-inset {
+  box-shadow: inset rgba(0,0,0,.3) 0 7px 7px -2px, inset rgba(0,0,0,.3) 0 -4px 4px -2px;
 }
 
 .title-smaller {
