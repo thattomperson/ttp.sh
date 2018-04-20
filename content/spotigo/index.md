@@ -11,12 +11,4 @@ resources:
     src: logo.png
 ---
 
-# Install
-
-```bash
-$ brew install thattomperson/tap/spotigo
-```
-
-```bash
-$ curl -L ttp.sh/spotigo/install | bash
-```
+{{< install spotigo >}}
