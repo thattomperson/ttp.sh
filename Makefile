@@ -4,7 +4,7 @@ theme: static/css;
 
 static/css:
 	npm run prod;
-	cd static/css; ls | xargs -I {} ../../node_modules/.bin/purgecss \
+	# cd static/css; ls | xargs -I {} ../../node_modules/.bin/purgecss \
 		--css {} --content ../../layouts/**/*.html --out .
 
 	cd static/css; ls | xargs -I {} ../../node_modules/.bin/uglifycss \
