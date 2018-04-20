@@ -41,10 +41,20 @@
   box-sizing: border-box;
 }
 
-html,
+html {
+  height: 100vh;
+}
 body {
+  padding-bottom: 50px;
   min-height: 100vh;
+  position: relative;
+  overflow: scroll;
   background: url("./resources/crossword.png");
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
 }
 
 body {
@@ -140,6 +150,7 @@ body.platform-windows .platform-windows {
 }
 
 .bg-red-gradient {
+  @apply text-white;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   background: rgb(241,78,92);
   background: 

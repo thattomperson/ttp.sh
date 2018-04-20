@@ -49,3 +49,14 @@ window.platform = function(platform) {
   localStorage.platform = `platform-${platform}`;
   document.body.classList.add(localStorage.platform);
 };
+
+// function addAnchor(element) {
+//   element.innerHTML = `<a href="#${element.id}">${element.innerText}</a>`;
+// }
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   var headers = document.querySelectorAll("h1,h2,h3");
+//   if (headers) {
+//     headers.forEach(addAnchor);
+//   }
+// });
