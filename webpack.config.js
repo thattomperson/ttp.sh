@@ -1,19 +1,23 @@
 const path = require("path");
+const glob = require("glob");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const PurgecssPlugin = require("purgecss-webpack-plugin");
 
 const prod = process.argv.indexOf("production") !== -1;
+
+console.log("production build:", prod);
 
 module.exports = {
   entry: {
     main: path.resolve("src/index")
   },
   output: {
-    filename: prod ? "js/[name].[hash].js" : "js/[name].js",
+    filename: prod ? "js/[name].[chunkhash].js" : "js/[name].js",
     path: path.resolve("static"),
     publicPath: "/"
   },
+
   module: {
     rules: [
       {
@@ -23,15 +27,20 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          prod ? MiniCssExtractPlugin.loader : "style-loader",
-          "css-loader",
-          "postcss-loader"
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            {
+              loader: "css-loader",
+              options: { minimize: prod }
+            },
+            "postcss-loader"
+          ]
+        })
       },
       {
         test: /\.(jpg|png)$/,
-        use: "url-loader"
+        use: "file-loader"
       }
     ]
   },
@@ -39,14 +48,31 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.ejs",
       filename: "../layouts/_default/baseof.html"
+    }),
+    new ExtractTextPlugin({
+      filename: prod ? "css/style.[chunkhash].css" : "css/style.css",
+      disable: false,
+      allChunks: true
     })
   ]
 };
 
 if (prod) {
+  class TailwindExtractor {
+    static extract(content) {
+      return content.match(/[A-z0-9-:\/]+/g) || [];
+    }
+  }
+
   module.exports.plugins.push(
-    new MiniCssExtractPlugin({
-      filename: "css/[name].[hash].css"
+    new PurgecssPlugin({
+      paths: glob.sync(`layouts/**/*.html`),
+      extractors: [
+        {
+          extractor: TailwindExtractor,
+          extensions: ["html"]
+        }
+      ]
     })
   );
 }
