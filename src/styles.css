@@ -44,6 +44,7 @@
 html,
 body {
   min-height: 100vh;
+  background: url("./resources/crossword.png");
 }
 
 body {
@@ -114,9 +115,7 @@ body.platform-windows .platform-windows {
 }
 
 
-
-/* Clip text element */
-.clip-text {
+.title {
   font-family: "Nanum Gothic Coding", monospace;
   text-align: center;
   letter-spacing: 1rem;
@@ -129,6 +128,10 @@ body.platform-windows .platform-windows {
   margin: 0.25em;
   padding: 0.5em 0.75em;
   text-align: center;
+}
+
+/* Clip text element */
+.clip-text {
   /* Color fallback */
   color: #663399;
   -webkit-background-clip: text;
@@ -136,15 +139,18 @@ body.platform-windows .platform-windows {
   -webkit-text-fill-color: transparent;
   background-repeat: no-repeat;
   background-size: cover;
+
+  /* Background image from http://thepatternlibrary.com/ and http://lorempixel.com */
+  background-image: url("./resources/bg1.jpg");
 }
 
-.clip-text_smaller {
+.title-smaller {
   font-size: 4em;
 }
 
-/* Background image from http://thepatternlibrary.com/ and http://lorempixel.com */
-.clip-text_one {
-  background-image: url("./resources/bg1.jpg");
+
+.clip-text_two {
+  background: white;
 }
 
 /**
