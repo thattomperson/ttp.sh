@@ -1,10 +1,11 @@
 ---
 title: Spotigo
-subtitle: fast small Spotify daemon
+subtitle: Fast Small Spotify Daemon
 date: "2018-01-25"
 type: project
 layout: project
-tags: ["project", "docker", "docker-compose"]
+tags: ["project", "spotify", "music"]
+repo: https://github.com/thattomperson/spotigo
 resources:
   - name: logo
     src: logo.png
@@ -19,5 +20,3 @@ $ brew install thattomperson/tap/spotigo
 ```bash
 $ curl -L ttp.sh/spotigo/install | bash
 ```
-
-content is awesome
