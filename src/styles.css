@@ -79,15 +79,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn {
-  @apply bg-transparent text-red font-semibold py-2 px-4 border border-red rounded;
-}
-
-.btn:hover {
-  @apply bg-red text-white border-transparent;
+  @apply bg-white text-red font-semibold py-2 px-4 border border-red rounded;
 }
 
 .btn-active {
-  @apply bg-red text-white border-transparent;
+  @apply bg-red text-white border-red;
+}
+
+.btn:hover {
+  @apply btn-active;
 }
 
 .platform-macos .platform-btn-macos,
@@ -137,6 +137,16 @@ body.platform-windows .platform-windows {
 
   /* Background image from http://thepatternlibrary.com/ and http://lorempixel.com */
   background-image: url("./resources/bg1.jpg");
+}
+
+.bg-red-gradient {
+  
+  background: rgb(241,78,92);
+  background: 
+  url(https://www.toptal.com/designers/subtlepatterns/patterns/funky-lines.png),
+  linear-gradient(90deg, rgba(241,78,92,1) 0%, rgba(190,50,73,1) 44%, rgba(241,78,92,1) 97%);
+  
+  background-blend-mode: multiply;
 }
 
 .title-smaller {
