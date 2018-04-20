@@ -687,6 +687,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+a {
+  text-decoration: none;
+}
+
 h1,
 h2,
 h3,
@@ -715,6 +719,57 @@ h6 {
 .content > * {
   margin-top: .5rem;
   margin-bottom: .5rem;
+}
+
+.platform-macos .platform-btn.platform-btn-macos,
+.platform-linux .platform-btn.platform-btn-linux,
+.platform-windows .platform-btn.platform-btn-windows {
+  border-color: #3490dc;
+  background-color: #3490dc;
+  color: #fff;
+}
+
+.platform-btn.platform-btn-macos:hover,
+.platform-btn.platform-btn-linux:hover,
+.platform-btn.platform-btn-windows:hover {
+  border-color: #f1f5f8;
+  background-color: #f1f5f8;
+}
+
+.platform-macos .platform-btn.platform-btn-macos:hover,
+.platform-linux .platform-btn.platform-btn-linux:hover,
+.platform-windows .platform-btn.platform-btn-windows:hover {
+  border-color: #3490dc;
+  background-color: #3490dc;
+}
+
+.platform-btn {
+  display: inline-block;
+  border-width: 1px;
+  border-color: #fff;
+  border-radius: .25rem;
+  color: #3490dc;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  padding-left: .75rem;
+  padding-right: .75rem;
+}
+
+.platform-btn {
+  border-color: #f1f5f8;
+  background-color: #f1f5f8;
+}
+
+body .platform-macos,
+body .platform-linux,
+body .platform-windows {
+  display: none;
+}
+
+body.platform-macos .platform-macos,
+body.platform-linux .platform-linux,
+body.platform-windows .platform-windows {
+  display: block;
 }
 
 /* Clip text element */

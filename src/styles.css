@@ -51,7 +51,11 @@ body {
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-h1,h2,h3,h4,h5,h6 {
+a {
+  @apply no-underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Ubuntu', sans-serif;
   font-weight: 500;
 }
@@ -72,6 +76,44 @@ h1,h2,h3,h4,h5,h6 {
 .content > * {
   @apply my-2; 
 }
+
+.platform-macos .platform-btn.platform-btn-macos,
+.platform-linux .platform-btn.platform-btn-linux,
+.platform-windows .platform-btn.platform-btn-windows {
+  @apply border-blue bg-blue text-white;
+}
+.platform-btn.platform-btn-macos:hover,
+.platform-btn.platform-btn-linux:hover,
+.platform-btn.platform-btn-windows:hover {
+  @apply border-grey-lighter bg-grey-lighter;
+}
+
+.platform-macos .platform-btn.platform-btn-macos:hover,
+.platform-linux .platform-btn.platform-btn-linux:hover,
+.platform-windows .platform-btn.platform-btn-windows:hover {
+  @apply border-blue bg-blue;
+}
+
+.platform-btn {
+  @apply inline-block border border-white rounded text-blue py-1 px-3
+}
+.platform-btn {
+  @apply border-grey-lighter bg-grey-lighter;
+}
+
+body .platform-macos,
+body .platform-linux,
+body .platform-windows {
+  display: none;
+}
+
+body.platform-macos .platform-macos,
+body.platform-linux .platform-linux,
+body.platform-windows .platform-windows {
+  display: block;
+}
+
+
 
 /* Clip text element */
 .clip-text {

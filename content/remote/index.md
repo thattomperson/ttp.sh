@@ -11,12 +11,4 @@ resources:
     src: logo.png
 ---
 
-# Install
-
-```bash
-$ brew install thattomperson/tap/remote
-```
-
-```bash
-$ curl -L ttp.sh/remote/install | bash
-```
+{{< install remote >}}
