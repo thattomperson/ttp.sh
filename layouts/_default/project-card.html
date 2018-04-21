@@ -1,4 +1,6 @@
-<a href="{{ .URL }}">
-  {{ $original := .Resources.GetMatch "logo" }}
-  <img src="{{ $original.RelPermalink }}">
-</a>
+<div class="project-card">
+  <a class="" href="{{ .URL }}">
+    {{ $original := .Resources.GetMatch "logo" }}
+    <img src="{{ $original.RelPermalink }}">
+  </a>
+</div>
