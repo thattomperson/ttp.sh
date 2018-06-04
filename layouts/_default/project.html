@@ -1,6 +1,6 @@
 {{ define "meta" }}
-  {{ $url := urls.Parse .Site.BaseURL }}		
-  <meta name=go-import content="{{ $url.Host }}/{{ lower .Params.title }} git {{ .Params.repo }}.git">
+  {{ $url := urls.Parse .Page.Permalink }}		
+  <meta name=go-import content="{{ $url.Host }}{{ $url.Path }} git {{ .Params.repo }}.git">
 {{ end }}
 
 {{ define "main" }}
