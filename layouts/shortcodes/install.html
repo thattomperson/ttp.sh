@@ -1,27 +1,29 @@
-<div class="js-install">
-  <div class='flex items-center justify-between flex-wrap'>
-    <h1 id="install">Install</h1>
-    <ul class="list-reset flex">
-      <li class="mr-3">
-        <a class="btn platform-btn-macos" href="javascript:platform('macos')">macOS</a>
+
+{{ $name := .Get 0 }}
+{{ $path := printf "%s/%s" $name "install" }}
+{{ $script := resources.Get "install" | resources.ExecuteAsTemplate $path . }}
+<div>
+  <header id="install" class="minor">
+    <h2 style="display:inline-block;">Install</h2>
+
+    <ul class="actions" style="display: inline-block; float: right;">
+      <li class="special"  style="display: inline-block;">
+        <a class="btn" href="javascript:platform('macos')">macOS</a>
       </li>
-      <li class="mr-3">
-        <a class="btn platform-btn-linux" href="javascript:platform('linux')">Linux</a>
+      <li style="display: inline-block;">
+        <a class="btn" href="javascript:platform('linux')">Linux</a>
       </li>
-      <li>
-        <a class="btn platform-btn-windows" href="javascript:platform('windows')">Windows</a>
+      <li style="display: inline-block;">
+        <a class="btn" href="javascript:platform('windows')">Windows</a>
       </li>
     </ul>
-  </div>
-  <div class="highlight platform-macos">
-    <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ brew install thattomperson/tap/{{ .Get 0 }}</code></pre>
-  </div>
-
-  <div class="highlight platform-linux">
-    <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -L ttp.sh/{{ .Get 0 }}/install | bash</code></pre>
-  </div>
-
-  <div class="highlight platform-windows">
-    <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -L ttp.sh/{{ .Get 0 }}/install | bash</code></pre>
-  </div>
+  </header>
+  
+  <pre class="platform-macos"><code class="language-bash" data-lang="bash">brew install thattomperson/tap/{{ $name }}</code></pre>
+  <pre class="platform-linux"><code class="language-bash" data-lang="bash">curl -L {{ $script.Permalink }} | bash -s -- -b /usr/local/bin</code></pre>
+  <ul class="actions">
+    <li class="platform-windows"><a href="{{ .Page.Params.repo }}/releases/latest" class="button">Windows Download</a></li>
+    <li><a href="{{ .Page.Params.repo }}" class="button">Learn More</a></li>
+  </ul>
+  
 </div>

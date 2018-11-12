@@ -1,5 +1,3 @@
 baseURL = "https://ttp.sh/"
 languageCode = "en-us"
 title = "TTP Web Development"
-
-pygmentsCodeFences=true

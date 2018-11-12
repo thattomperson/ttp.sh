@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>
-      TTP Web Development
-    </title>
+    <meta charset="UTF-8" />
+    <title>TTP Development</title>
     {{ block "meta" . }} {{ end }}
-  <link href="/css/style.2f7af3c90a6eaf5704aa.css" rel="stylesheet"></head>
-  <body>
-    {{ block "main" . }} {{ end }}
-    <div class="bg-red-gradient p-4 absolute pin-b pin-x">
-      <div class="w-1/2 mx-auto">© 2018 ttp.sh All Rights Reserved</div>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:700"
+      rel="stylesheet"
+    />
+    <noscript><link rel="stylesheet" href="/css/noscript.css"/></noscript>
+  </head>
+  <body class="is-preload platform-macos">
+    <div id="wrapper">
+      
+      {{ if .Page.IsHome }}
+      <header id="header" class="alt">
+        <h1>TTP<br>Development</h1>
+      {{ else }}
+      <header id="header" class="alt-two">
+        <h1>{{ .Page.Title }}</h1>
+        <h1>TTP<br>Development</h1>
+      {{ end }}
+      </header>
+      <nav id="nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/#projects">Projects</a></li>
+        </ul>
+      </nav>
+      {{ block "main" . }} {{ end }}
+      <footer id="footer">
+        <p class="copyright">
+          &copy; ttp.sh. Design: <a href="https://html5up.net">HTML5 UP</a>.
+        </p>
+      </footer>
     </div>
-  <script type="text/javascript" src="/js/main.2f7af3c90a6eaf5704aa.js"></script></body>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/browser.min.js"></script>
+    <script src="/js/breakpoints.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+    function platform(newPlatform) {
+      window.localStorage.platform = newPlatform;
+      document.body.classList.remove('platform-macos');
+      document.body.classList.remove('platform-windows');
+      document.body.classList.remove('platform-linux');
+
+      document.body.classList.add('platform-' + newPlatform);
+    }
+    platform(window.localStorage.platform)
+    </script>
+  </body>
 </html>
