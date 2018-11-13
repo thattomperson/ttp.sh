@@ -4,7 +4,7 @@ subtitle: Package Installer
 date: "2018-01-25"
 type: project
 layout: project
-tags: ["project", "aws", "ecs"]
+tags: ["project", "pacakges", "autoload", "php", "composer"]
 repo: https://github.com/thattomperson/frost
 ---
 

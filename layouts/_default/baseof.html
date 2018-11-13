@@ -6,10 +6,7 @@
     {{ block "meta" . }} {{ end }}
     {{ $style := resources.Get "sass/main.scss" | resources.ToCSS | resources.Fingerprint "sha512" }}
     <link rel="stylesheet" integrity="{{ $style.Data.Integrity }}" href="{{ $style.RelPermalink }}">
-    <link
-      href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:700"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     {{ $noscript := resources.Get "sass/noscript.scss" | resources.ToCSS | resources.Fingerprint "sha512" }}
     <noscript><link rel="stylesheet" integrity="{{ $noscript.Data.Integrity }}" href="{{ $noscript.RelPermalink }}"></noscript>
   </head>
@@ -17,11 +14,11 @@
     <div id="wrapper">
       {{ if .Page.IsHome }}
       <header id="header" class="alt">
-        <h1>TTP<br>Development</h1>
+        <h1>{{ .Site.Title }}</h1>
       {{ else }}
       <header id="header" class="alt-two">
         <h1>{{ .Page.Title }}</h1>
-        <h1>TTP<br>Development</h1>
+        <h1>{{ .Site.Title }}</h1>
       {{ end }}
       </header>
       <nav id="nav">
