@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <title>TTP Development</title>
     {{ block "meta" . }} {{ end }}
-    <link rel="stylesheet" href="/css/main.css" />
+    {{ $style := resources.Get "sass/main.scss" | resources.ToCSS | resources.Fingerprint "sha512" }}
+    <link rel="stylesheet" integrity="{{ $style.Data.Integrity }}" href="{{ $style.RelPermalink }}">
     <link
       href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:700"
       rel="stylesheet"
     />
-    <noscript><link rel="stylesheet" href="/css/noscript.css"/></noscript>
+    {{ $noscript := resources.Get "sass/noscript.scss" | resources.ToCSS | resources.Fingerprint "sha512" }}
+    <noscript><link rel="stylesheet" integrity="{{ $noscript.Data.Integrity }}" href="{{ $noscript.RelPermalink }}"></noscript>
   </head>
   <body class="is-preload platform-macos">
     <div id="wrapper">
-      
       {{ if .Page.IsHome }}
       <header id="header" class="alt">
         <h1>TTP<br>Development</h1>
@@ -36,23 +37,18 @@
         </p>
       </footer>
     </div>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/jquery.scrollex.min.js"></script>
-    <script src="/js/jquery.scrolly.min.js"></script>
-    <script src="/js/browser.min.js"></script>
-    <script src="/js/breakpoints.min.js"></script>
-    <script src="/js/util.js"></script>
-    <script src="/js/main.js"></script>
-    <script>
-    function platform(newPlatform) {
-      window.localStorage.platform = newPlatform;
-      document.body.classList.remove('platform-macos');
-      document.body.classList.remove('platform-windows');
-      document.body.classList.remove('platform-linux');
+    {{ $jquery := resources.Get "js/jquery.min.js" }}
+    {{ $scrollex := resources.Get "js/jquery.scrollex.min.js" }}
+    {{ $scrolly := resources.Get "js/jquery.scrolly.min.js" }}
+    {{ $browser := resources.Get "js/browser.min.js" }}
+    {{ $breakpoints := resources.Get "js/breakpoints.min.js" }}
 
-      document.body.classList.add('platform-' + newPlatform);
-    }
-    platform(window.localStorage.platform)
-    </script>
+    {{ $plugins := slice $jquery $scrollex $scrolly $browser $breakpoints | resources.Concat "js/plugins.js" | resources.Fingerprint "sha512" }}
+    <script type="text/javascript" src="{{ $plugins.Permalink }}" integrity="{{ $plugins.Data.Integrity }}"></script>
+    
+    {{ $util := resources.Get "js/util.js" }}
+    {{ $main := resources.Get "js/main.js" }}
+    {{ $scripts := slice $util $main | resources.Concat "js/main.js" | resources.Minify | resources.Fingerprint "sha512" }}
+    <script type="text/javascript" src="{{ $scripts.Permalink }}" integrity="{{ $scripts.Data.Integrity }}"></script>
   </body>
 </html>
