@@ -19,10 +19,17 @@
     </ul>
   </header>
   
-  <pre class="platform-macos"><code class="language-bash" data-lang="bash">brew install thattomperson/tap/{{ $name }}</code></pre>
-  <pre class="platform-linux"><code class="language-bash" data-lang="bash">curl -L {{ $script.Permalink }} | bash -s -- -b /usr/local/bin</code></pre>
+  <div class="platform-macos">
+    <p>macOS users can install <strong>{{ $name }}</strong> using <a href="https://brew.sh/">Homebrew</a></p>
+    <pre><code class="language-bash" data-lang="bash">brew install thattomperson/tap/{{ $name }}</code></pre>
+  </div>
+  <div class="platform-linux">
+    <p>Linux users can use the following command in a terminal to install <strong>{{ $name }}</strong></p>
+    <pre><code class="language-bash" data-lang="bash">curl -L {{ $script.Permalink }} | bash -s -- -b /usr/local/bin</code></pre>
+  </div>
   <ul class="actions">
     <li class="platform-windows"><a href="{{ .Page.Params.repo }}/releases/latest" class="button">Windows Download</a></li>
+    <li class="platform-macos platform-linux"><a href="{{ .Page.Params.repo }}/releases/latest" class="button">Releases</a></li>
     <li><a href="{{ .Page.Params.repo }}" class="button">Learn More</a></li>
   </ul>
   
