@@ -29,7 +29,8 @@ out at the end of this contract.
 **Us**: We have the experience and ability to do everything we’ve agreed with you and we’ll do it all in a professional
 and timely manner. We’ll endeavour to meet every deadline that’s set and on top of that we'll maintain the confidentiality
 of everything you give us. 
-<hr>
+
+---
 
 ## Getting down to the nitty gritty
 ### Design
@@ -57,14 +58,16 @@ We deliver pages developed from HTML markup, CSS stylesheets for styling and uno
 
 ### Browser testing
 Browser testing no longer means attempting to make a website look the same in browsers of different capabilities or on
-    devices with different size screens. It does mean ensuring that a person’s experience of a design should be appropriate
-    to the capabilities of a browser or device.
+devices with different size screens. It does mean ensuring that a person’s experience of a design should be appropriate
+to the capabilities of a browser or device.
+
 We test our work in current versions of major desktop browsers including those made by Apple (Safari), Google (Chrome),
-    Microsoft (Edge), Mozilla Firefox and Opera. We won’t test in other older browsers unless we agreed separately. If you
-    need an enhanced design for an older browser, we can provide a separate estimate for that.
-<h4>Mobile browser testing</h4>
+Microsoft (Edge), Mozilla Firefox and Opera. We won’t test in other older browsers unless we agreed separately. If you
+need an enhanced design for an older browser, we can provide a separate estimate for that.
+
+#### Mobile browser testing
 Testing using popular smaller screen devices is essential in ensuring that a person’s experience of a design is appropriate
-    to the capabilities of the device they’re using. We test our designs in:
+to the capabilities of the device they’re using. We test our designs in:
 
 - **iOS**: Safari and Google Chrome
 - **Android**: Google Chrome
@@ -178,54 +181,4 @@ Date <span class="date">[date]</span>
 Everyone should sign above and keep a copy for their records.
 
 
-
-<script>
-obj = {}
-try {
-    obj = JSON.parse(window.atob(window.location.hash.substr(1)))
-} catch(e) {}
-function editable(field, className) {
-    function update(evt) {
-        for (let i = 0, elm; elm = elms[i]; i++) {
-            // update all elements that didn't fire the event
-            if (elm != evt.target) elm.innerText = evt.target.innerText.trim() || placeholder
-        }
-        obj[field] = evt.target.innerText.trim()
-        window.location.hash = window.btoa(JSON.stringify(obj))
-    }
-
-    function blur(evt) {
-        // if the element is empty set it back to the place holder
-        if (evt.target.innerText.trim() == '') evt.target.innerText = placeholder
-    }
-
-    function focus(evt) {
-        if (evt.target.innerText.trim() == placeholder) {
-            evt.target.select()
-        }
-    }
-
-    var elms = document.querySelectorAll('.' + className)
-    var placeholder = ''
-    if (elms.length > 0 ) {
-        placeholder = elms[0].innerText.trim()
-        for (let i = 0, elm; elm = elms[i]; i++) {
-            if (obj[field]) {
-                elm.innerText = obj[field]
-            }
-
-            elm.contentEditable = true
-            elm.oninput = update
-            elm.onblur = blur
-            elm.onfocus = focus
-        }
-    }
-}
-
-editable('a', 'customer-name')
-editable('b', 'company-name')
-editable('c', 'total')
-editable('d', 'payment-details')
-editable('e', 'payment-schedule')
-editable('f', 'date')
-</script>
+{{< script contract >}}

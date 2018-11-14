@@ -1,0 +1,6 @@
+
+
+{{ $name := .Get 0 }}
+{{ $path := printf "js/%s.js" $name }}
+{{ $script := resources.Get $path | resources.Minify | resources.Fingerprint "sha512" }}
+<script type="text/javascript" src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
