@@ -13,7 +13,7 @@ sections:
   path: content/site
   label: Sites
   create: all
-  match: "*"
+  match: "**/*"
   templates:
   - site
 - type: directory
