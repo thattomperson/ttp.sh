@@ -11,3 +11,5 @@ fields:
   label: Body
   config:
     min: '1'
+  template_types:
+  - site-component
