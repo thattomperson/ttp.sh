@@ -2,7 +2,7 @@
 title: Frost
 subtitle: Package Installer
 date: 2018-01-25 00:00:00 +0000
-type: project
+type: ''
 tags:
 - project
 - pacakges
@@ -10,6 +10,7 @@ tags:
 - php
 - composer
 repo: https://github.com/thattomperson/frost
+
 ---
 ## Package Installer?
 
