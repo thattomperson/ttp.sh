@@ -110,14 +110,24 @@
 
 								}
 							});
-
 					});
-
 		}
 
-	// Scrolly.
+		// Scrolly.
 		$('.scrolly').scrolly({
 			speed: 1000
 		});
+
+
+		function platform(newPlatform) {
+      platforms = ['macos', 'windows', 'linux'];
+      window.localStorage.platform = newPlatform || platforms[0];
+      for (var i = 0, platform; platform = platforms[i]; i++) {
+        document.body.classList.remove('platform-' + platform);
+      }
+      document.body.classList.add('platform-' + window.localStorage.platform);
+		}
+		
+    platform(window.localStorage.platform);
 
 })(jQuery);

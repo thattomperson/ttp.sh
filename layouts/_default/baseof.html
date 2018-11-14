@@ -6,23 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TTP Development</title>
     {{ block "meta" . }} {{ end }}
-    <link rel="stylesheet" href="/css/main.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:700"
-      rel="stylesheet"
-    />
-    <noscript><link rel="stylesheet" href="/css/noscript.css"/></noscript>
+    {{ $style := resources.Get "sass/main.scss" | resources.ToCSS | resources.Fingerprint "sha512" }}
+    {{ if .RSSLink }}<link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />{{ end }}
+    <link rel="stylesheet" integrity="{{ $style.Data.Integrity }}" href="{{ $style.RelPermalink }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    {{ $noscript := resources.Get "sass/noscript.scss" | resources.ToCSS | resources.Fingerprint "sha512" }}
+    <noscript><link rel="stylesheet" integrity="{{ $noscript.Data.Integrity }}" href="{{ $noscript.RelPermalink }}"></noscript>
   </head>
   <body class="is-preload platform-macos">
     <div id="wrapper">
-      
       {{ if .Page.IsHome }}
       <header id="header" class="alt">
-        <h1>TTP<br>Development</h1>
+        <h1>{{ .Site.Title }}</h1>
       {{ else }}
       <header id="header" class="alt-two">
         <h1>{{ .Page.Title }}</h1>
-        <h1>TTP<br>Development</h1>
+        <h1>{{ .Site.Title }}</h1>
       {{ end }}
       </header>
       <nav id="nav">
@@ -38,23 +37,19 @@
         </p>
       </footer>
     </div>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/jquery.scrollex.min.js"></script>
-    <script src="/js/jquery.scrolly.min.js"></script>
-    <script src="/js/browser.min.js"></script>
-    <script src="/js/breakpoints.min.js"></script>
-    <script src="/js/util.js"></script>
-    <script src="/js/main.js"></script>
-    <script>
-    function platform(newPlatform) {
-      platforms = ['macos', 'windows', 'linux'];
-      window.localStorage.platform = newPlatform || platforms[0];
-      for (var i = 0, platform; platform = platforms[i]; i++) {
-        document.body.classList.remove('platform-' + platform);
-      }
-      document.body.classList.add('platform-' + window.localStorage.platform);
-    }
-    platform(window.localStorage.platform);
-    </script>
+
+    {{ $jquery := resources.Get "js/jquery.min.js" }}
+    {{ $scrollex := resources.Get "js/jquery.scrollex.min.js" }}
+    {{ $scrolly := resources.Get "js/jquery.scrolly.min.js" }}
+    {{ $browser := resources.Get "js/browser.min.js" }}
+    {{ $breakpoints := resources.Get "js/breakpoints.min.js" }}
+
+    {{ $plugins := slice $jquery $scrollex $scrolly $browser $breakpoints | resources.Concat "js/plugins.js" | resources.Fingerprint "sha512" }}
+    <script type="text/javascript" src="{{ $plugins.Permalink }}" integrity="{{ $plugins.Data.Integrity }}"></script>
+    
+    {{ $util := resources.Get "js/util.js" }}
+    {{ $main := resources.Get "js/main.js" }}
+    {{ $scripts := slice $util $main | resources.Concat "js/main.js" | resources.Minify | resources.Fingerprint "sha512" }}
+    <script type="text/javascript" src="{{ $scripts.Permalink }}" integrity="{{ $scripts.Data.Integrity }}"></script>
   </body>
 </html>
