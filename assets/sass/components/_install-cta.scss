@@ -1,0 +1,12 @@
+
+body .platform-macos,
+body .platform-windows,
+body .platform-linux {
+	display: none;
+}
+
+body.platform-macos .platform-macos,
+body.platform-windows .platform-windows,
+body.platform-linux  .platform-linux {
+	display: block;
+}
