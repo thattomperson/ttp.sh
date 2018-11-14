@@ -11,3 +11,7 @@ title = "TTP Development"
     enableDNT = true
   [privacy.youtube]
     privacyEnhanced = true
+
+
+[permalinks]
+  project = "/:title/"

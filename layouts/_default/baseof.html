@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ .Site.Language.Lang }}">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,14 +15,8 @@
   </head>
   <body class="is-preload platform-macos">
     <div id="wrapper">
-      {{ if .Page.IsHome }}
       <header id="header" class="alt">
-        <h1>{{ .Site.Title }}</h1>
-      {{ else }}
-      <header id="header" class="alt-two">
         <h1>{{ .Page.Title }}</h1>
-        <h1>{{ .Site.Title }}</h1>
-      {{ end }}
       </header>
       <nav id="nav">
         <ul>
@@ -38,18 +32,7 @@
       </footer>
     </div>
 
-    {{ $jquery := resources.Get "js/jquery.min.js" }}
-    {{ $scrollex := resources.Get "js/jquery.scrollex.min.js" }}
-    {{ $scrolly := resources.Get "js/jquery.scrolly.min.js" }}
-    {{ $browser := resources.Get "js/browser.min.js" }}
-    {{ $breakpoints := resources.Get "js/breakpoints.min.js" }}
-
-    {{ $plugins := slice $jquery $scrollex $scrolly $browser $breakpoints | resources.Concat "js/plugins.js" | resources.Fingerprint "sha512" }}
-    <script type="text/javascript" src="{{ $plugins.Permalink }}" integrity="{{ $plugins.Data.Integrity }}"></script>
-    
-    {{ $util := resources.Get "js/util.js" }}
-    {{ $main := resources.Get "js/main.js" }}
-    {{ $scripts := slice $util $main | resources.Concat "js/main.js" | resources.Minify | resources.Fingerprint "sha512" }}
-    <script type="text/javascript" src="{{ $scripts.Permalink }}" integrity="{{ $scripts.Data.Integrity }}"></script>
+    {{ $script := resources.Get "js/main.js" | resources.Minify | resources.Fingerprint "sha512" }}
+    <script type="text/javascript" src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
   </body>
 </html>

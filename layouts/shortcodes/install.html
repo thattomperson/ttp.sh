@@ -2,6 +2,7 @@
 {{ $name := .Get 0 }}
 {{ $path := printf "%s/%s" $name "install" }}
 {{ $script := resources.Get "scripts/install" | resources.ExecuteAsTemplate $path . }}
+<!--more-->
 <div>
   <header id="install" class="minor">
     <h2 style="display:inline-block;">Install</h2>

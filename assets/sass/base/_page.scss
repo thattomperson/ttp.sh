@@ -37,15 +37,15 @@
 		background-color: _palette(bg);
 		@include vendor('background-image', (
 			'url("images/overlay.png")',
-			'linear-gradient(45deg, #{_palette(bg1)} 15%, #{_palette(bg2) 85%})',
+			'linear-gradient(45deg, #{_palette(bg1)} 15%, #{_palette(bg2)} 85%, #{_palette(bg3) 100%})',
 		));
+		min-height: 100vh;
 
 		// Stops initial animations until page loads.
-			&.is-preload {
-				*, *:before, *:after {
-					@include vendor('animation', 'none !important');
-					@include vendor('transition', 'none !important');
-				}
+		&.is-preload {
+			*, *:before, *:after {
+				@include vendor('animation', 'none !important');
+				@include vendor('transition', 'none !important');
 			}
-
+		}
 	}
