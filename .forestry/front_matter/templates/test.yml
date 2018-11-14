@@ -1,0 +1,8 @@
+---
+label: Test
+hide_body: false
+is_partial: false
+fields:
+- type: text
+  label: Body
+  name: body
