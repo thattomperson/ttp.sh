@@ -5,6 +5,7 @@
     <title>TTP Development</title>
     {{ block "meta" . }} {{ end }}
     {{ $style := resources.Get "sass/main.scss" | resources.ToCSS | resources.Fingerprint "sha512" }}
+    {{ if .RSSLink }}<link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />{{ end }}
     <link rel="stylesheet" integrity="{{ $style.Data.Integrity }}" href="{{ $style.RelPermalink }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     {{ $noscript := resources.Get "sass/noscript.scss" | resources.ToCSS | resources.Fingerprint "sha512" }}
