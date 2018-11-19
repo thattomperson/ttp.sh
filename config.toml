@@ -2,6 +2,8 @@ baseURL = "https://ttp.sh/"
 languageCode = "en-us"
 title = "TTP Development"
 
+googleAnalytics = "UA-129311505-1"
+
 [privacy]
   [privacy.googleAnalytics]
     anonymizeIP = true

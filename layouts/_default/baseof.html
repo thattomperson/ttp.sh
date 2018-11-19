@@ -34,5 +34,7 @@
 
     {{ $script := resources.Get "js/main.js" | resources.Minify | resources.Fingerprint "sha512" }}
     <script type="text/javascript" src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+
+    {{ template "_internal/google_analytics_async.html" . }}
   </body>
 </html>

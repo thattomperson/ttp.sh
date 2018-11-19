@@ -1,3 +1,0 @@
-#! /bin/bash
-
-curl -LsS ttp.sh/bookmarks.json > ~/Library/Application\ Support/Google/Chrome/Default/Bookmarks

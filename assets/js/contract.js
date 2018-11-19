@@ -1,6 +1,7 @@
-
-
 function editable(obj, field, className) {
+  var elms = document.querySelectorAll('.' + className)
+  var placeholder = ''
+
   function update(evt) {
       for (let i = 0, elm; elm = elms[i]; i++) {
           // update all elements that didn't fire the event
@@ -15,19 +16,17 @@ function editable(obj, field, className) {
       if (evt.target.innerText.trim() == '') evt.target.innerText = placeholder
   }
 
-  var elms = document.querySelectorAll('.' + className)
-  var placeholder = ''
   if (elms.length > 0 ) {
-      placeholder = elms[0].innerText.trim()
-      for (let i = 0, elm; elm = elms[i]; i++) {
-          if (obj[field]) {
-              elm.innerText = obj[field]
-          }
+    placeholder = elms[0].innerText.trim()
+    for (let i = 0, elm; elm = elms[i]; i++) {
+        if (obj[field]) {
+            elm.innerText = obj[field]
+        }
 
-          elm.contentEditable = true
-          elm.oninput = update
-          elm.onblur = blur
-      }
+        elm.contentEditable = true
+        elm.oninput = update
+        elm.onblur = blur
+    }
   }
 }
 
@@ -43,3 +42,47 @@ function bind(fields) {
 }
 
 bind(['customer-name', 'company-name', 'total', 'payment-details', 'payment-schedule', 'date'])
+
+// var data = {
+//     'customer-name': 'dave'
+// }
+
+reagere('.content')
+
+function reagere(selector, data) {
+    data = data || {}
+    var map = {};
+    var d = {};
+    var root = document.querySelector(selector)
+    var nodes = root.querySelectorAll('[x-model]')
+
+    for (let i = 0, node; node = nodes[i]; i++) {
+        var name = node.attributes['x-model'].value
+        node.contentEditable = true
+        node.innerText = d[name] = data[name] = data[name] || node.innerText
+        node.oninput = (name) => ((e) => data[name] = e.target.innerText)(name)
+        map[name] = map[name] || []
+        map[name].push(node)
+    }
+
+
+    var keys = Object.keys(data)
+    for (let i = 0, key; key = keys[i]; i++) {        
+        Object.defineProperty(data, key, {
+            set: update(key),
+            get: function () {
+                return d[key]
+            }
+        })
+    }
+
+    function update(key) {
+        return function (value) {
+            d[key] = value
+            for (let i = 0, node; node = map[key][i]; i++) {
+                node.innerText = value
+            }
+        }
+    }
+    console.log(data)
+}

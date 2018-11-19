@@ -43,7 +43,7 @@ function installdmg() {
 
 info "Bootstrapping a new macOS"
 info "sudo password may be required"
-info "cntr-c now to cancel"
+info "ctr-c now to cancel"
 
 sleep 5
 
@@ -55,7 +55,7 @@ brew tap caskroom/fonts
 brew cask install font-fira-code
 
 info "Install Common Brew tools"
-brew install dep go hugo dnsmasq thattomperson/tap/remote thattomperson/tap/vm
+brew install dnsmasq thattomperson/tap/remote
 
 info "Setting Up DNS for .test domains"
 # Copied from https://gist.github.com/ogrrd/5831371 and https://github.com/Homebrew/homebrew-services
@@ -64,21 +64,8 @@ echo 'address=/.test/127.0.0.1' > $(brew --prefix)/etc/dnsmasq.conf
 sudo mkdir -v /etc/resolver
 sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/test'
 
-
 info "Starting dnsmasq now (and starting on boot)"
 sudo brew services start dnsmasq
-
-info "Starting vm now (and starting on login)"
-brew services start vm
-
-mkdir -p ~/Projects/example
-curl -L ttp.sh/example/index.html > Projects/example/index.html
-curl -L ttp.sh/example/docker-compose.yml > Projects/example/docker-compose.yml
-(cd Projects/example; vm start)
-info "vm is running, goto https://example.test to have a look"
-
-info "Downloading Visual Studio Code"
-installzip https://go.microsoft.com/fwlink/?LinkID=620882
 
 info "SUCCESS! Enjoy your new Mac"
 exit 0

@@ -3,7 +3,7 @@ title: The Contract
 ---
 
 **Between** Thomas Albrighton<br>
-**And** <span class="customer-name">[customer name]</span>
+**And** <span x-model="customer-name">[customer name]</span>
 ## Summary:
 We’ll always do our best to fulfil your needs and meet your expectations, but it’s important to have things written down
 so that we both know what’s what, who should do what and when, and what will happen if something goes wrong. In this
@@ -11,11 +11,11 @@ contract you won’t find any complicated legal terms or long passages of unread
 into signing something that you might later regret. What we do want is what’s best for both parties, now and in the future.
 
 #### So in short;
-You **<span class="customer-name">[customer name]</span>**, located at **<span class="company-name">[company name]</span>** are hiring **Thomas Albrighton** (“We or Us or Me”) to:
+You **<span x-model="customer-name">[customer name]</span>**, located at **<span x-model="company-name">[company name]</span>** are hiring **Thomas Albrighton** (“We or Us or Me”) to:
 
 - [Design and develop a web site]
 
-For the estimated total price of $<span class="total">[total]</span> as outlined in our previous correspondence.
+For the estimated total price of $<span x-model="total">[total]</span> as outlined in our previous correspondence.
 Of course it’s a little more complicated, but we’ll get to that.
 
 ### What do both parties agree to?
@@ -145,8 +145,8 @@ We’re sure you understand how important it is as a small business that you pay
 As we’re also sure you’ll want to stay friends, you agree to stick tight to the following payment schedule.
 
 <p>
-<div class="payment-details">[Payment details]</div>
-<div class="payment-schedule">[Payment schedule]</div>
+<div x-model="payment-details">[Payment details]</div>
+<div x-model="payment-schedule">[Payment schedule]</div>
 </p>
 
 We issue invoices electronically. Our payment terms are 30 days from the date of invoice by BACS or the SWIFT international
@@ -174,10 +174,10 @@ Oh and don’t forget those men with big dogs.
 Signed by and on behalf of Thomas Albrighton
     <br><br> ……………………………………………………
 
-Signed by and on behalf of <span class="customer-name">[customer name]</span>
+Signed by and on behalf of <span x-model="customer-name">[customer name]</span>
     <br><br> ……………………………………………………
 
-Date <span class="date">[date]</span>
+Date <span x-model="date">[date]</span>
 Everyone should sign above and keep a copy for their records.
 
 
