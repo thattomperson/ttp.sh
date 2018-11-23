@@ -13,34 +13,6 @@ function info() {
   printf "${BLUE}INFO: ${1}${RESET}\n"
 }
 
-function installzip() {
-  set -x
-  tempd=$(mktemp -d)
-  curl -L $1 > $tempd/pkg.zip
-  unzip $tempd/pkg.zip -d $tempd/
-  sudo cp -rf $tempd/*.app /Applications
-  rm -rf $tempd
-  set +x
-}
-
-function installdmg() {
-  set -x
-  tempd=$(mktemp -d)
-  curl -L $1 > $tempd/pkg.dmg
-  listing=$(sudo hdiutil attach $tempd/pkg.dmg | grep Volumes)
-  volume=$(echo "$listing" | cut -f 3)
-  if [ -e "$volume"/*.app ]; then
-    sudo cp -rf "$volume"/*.app /Applications
-  elif [ -e "$volume"/*.pkg ]; then
-    package=$(ls -1 | grep *.pkg | head -1)
-    sudo installer -pkg "$volume"/"$package".pkg -target /
-  fi
-  sudo hdiutil detach "$(echo "$listing" | cut -f 1)"
-  rm -rf $tempd
-  set +x
-}
-
-
 info "Bootstrapping a new macOS"
 info "sudo password may be required"
 info "ctr-c now to cancel"
@@ -55,17 +27,23 @@ brew tap caskroom/fonts
 brew cask install font-fira-code
 
 info "Install Common Brew tools"
-brew install dnsmasq thattomperson/tap/remote
+brew install dnsmasq thattomperson/tap/remote mkcert nss
 
-info "Setting Up DNS for .test domains"
+info "Setting Up DNS for .dev domains"
 # Copied from https://gist.github.com/ogrrd/5831371 and https://github.com/Homebrew/homebrew-services
 mkdir -pv $(brew --prefix)/etc/
-echo 'address=/.test/127.0.0.1' > $(brew --prefix)/etc/dnsmasq.conf
+echo 'address=/dev/127.0.0.1' > $(brew --prefix)/etc/dnsmasq.conf
 sudo mkdir -v /etc/resolver
-sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/test'
+sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
 
-info "Starting dnsmasq now (and starting on boot)"
+info "Making development RootCA"
+mkcert -install
+
+info "Starting dnsmasq now (and it will starting on boot)"
 sudo brew services start dnsmasq
+
+info "Adding in some extra apps"
+brew cask install visual-studio-code spotify slack docker
 
 info "SUCCESS! Enjoy your new Mac"
 exit 0
