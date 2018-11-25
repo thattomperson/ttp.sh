@@ -10,9 +10,22 @@ function main() {
 	window.setTimeout(function() {
 		document.body.classList.remove('is-preload')
 	}, 50);
-	platform(window.localStorage.platform);
+	platform(window.localStorage.platform || detectPlatform());
 }
 
+
+function detectPlatform() {
+	var p = window.navigator.platform.toLowerCase();
+
+	if (p.indexOf('mac') >= 0) {
+		return 'macos'
+	}
+	if (p.indexOf('win') >= 0) {
+		return 'windows'
+	}
+
+	return 'linux'
+}
 
 
 
