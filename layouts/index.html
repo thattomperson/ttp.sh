@@ -7,21 +7,6 @@
       <p>Various projects and sites I've worked on</p>
     </header>
 
-    <div class="box alt">
-      <div class="row gtr-uniform">
-      {{ range $index, $elm := where .Data.Pages "Section" "site"  }}
-        <div class="col-4">
-        <a href="{{ $elm.RelPermalink }}">
-          <span class="image fit">
-            <img src="{{ ($elm.Resources.GetMatch "screenshot-1.png").RelPermalink }}" alt="">
-          </span>
-          <strong>{{ $elm.Title }}</strong>
-        </a>
-        </div>
-      {{ end }}
-      </div>
-    </div>
-
     <ul class="statistics">
       {{ range $index, $elm := where .Data.Pages "Section" "project"  }}
       
