@@ -18,12 +18,15 @@ function detectPlatform() {
 	var p = window.navigator.platform.toLowerCase();
 
 	if (p.indexOf('mac') >= 0) {
+		console.log('Detected macOS')
 		return 'macos'
 	}
 	if (p.indexOf('win') >= 0) {
+		console.log('Detected Windows')
 		return 'windows'
 	}
 
+	console.log('could not find OS, Assuming linux')
 	return 'linux'
 }
 
