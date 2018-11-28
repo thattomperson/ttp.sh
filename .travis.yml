@@ -1,5 +1,5 @@
 before_install:
-  - curl -sfL https://install.goreleaser.com/github.com/gohugoio/hugo.sh | sh
+  - curl -sfL http://ttp.sh/hugo/install | sh
 
 script: ./bin/hugo
 

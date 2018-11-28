@@ -1,8 +1,0 @@
----
-label: Site Component
-hide_body: false
-is_partial: true
-fields:
-- type: textarea
-  name: body
-  label: Body
