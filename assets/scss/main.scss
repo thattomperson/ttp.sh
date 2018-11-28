@@ -10,6 +10,17 @@ $tertiary: #2ec4b6;
 $black: #201f22;
 $white: #f8f6f7;
 
+@import 'breakpoints';
+
+@include breakpoints((
+    xlarge:   ( 1281px,  1680px ),
+    large:    ( 981px,   1280px ),
+    medium:   ( 737px,   980px  ),
+    small:    ( 481px,   736px  ),
+    xsmall:   ( 361px,   480px  ),
+    xxsmall:  ( null,    360px  )
+));
+
 html, body {
     margin: 0;
     padding: 0;
@@ -81,13 +92,10 @@ a {
 header, .content {
     padding: 2px;
 
-    h1, h2 {
-        user-select: none;
-    }
-
     h1 {
-        width: 100%;
         text-align: center;
+        width: 100%;
+        user-select: none;
         font-size: 4rem;
         line-height: 4rem;
         text-shadow: $tertiary .25rem .25rem 0, $primary .5rem .5rem 0, $secondary .75rem .75rem 0;
@@ -102,16 +110,20 @@ header, .content {
     
     h2 {
         font-size: 2rem;
-        display: inline-block;
-        margin: 1rem 1rem 0 1rem;
         padding: 0;
+        text-align: center;
+
+        margin: auto;
+        display: block;
+        width: 100%;
+        
 
         &:after {
             content: " ";
             border-radius: 2px;
             display: block;
-            width: calc(100% + 2rem);
-            margin-left: -1rem;
+            width: calc(40% + 2rem);
+            margin-left: calc(30% + -1rem);
             height: 4px;
             background: linear-gradient(to right, $primary, $secondary, $tertiary)
         }
@@ -178,11 +190,6 @@ p {
     padding: .25rem;
 }
 
-.wrapper {
-    width: 85%;
-    margin: auto;
-}
-
 .main {
     background: $white;
     color: $black;
@@ -227,4 +234,35 @@ body[platform=mac] [platform*=mac],
 body[platform=win] [platform*=win],
 body[platform=linux] [platform*=linux] {
     display: initial;
+}
+
+.wrapper {
+    width: 90%;
+    margin: auto;
+}
+
+@include breakpoint('>=medium') {
+    .wrapper {
+        width: 80%;
+    }
+}
+
+@include breakpoint('>=large') {
+    .wrapper {
+        width: 70%;
+    }
+}
+
+@include breakpoint('>=xlarge') {
+    .wrapper {
+        width: 65%;
+    }
+}
+
+pre {
+    overflow-x: hidden;
+    background: $black;
+    color: $white;
+    padding: 1rem;
+    border-radius: 5px;
 }
