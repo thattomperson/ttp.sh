@@ -8,6 +8,8 @@ tags: ["project", "spotify", "music"]
 repo: https://github.com/thattomperson/spotigo
 ---
 
+# Spotigo
+
 {{< install spotigo >}}
 
 ## Thanks
