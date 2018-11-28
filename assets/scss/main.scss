@@ -48,7 +48,7 @@ a {
 }
 
 
-@keyframes tail {
+@keyframes acid {
     @for $i from 0 through 33 {
         #{$i}% { 
             text-shadow: 
@@ -88,7 +88,7 @@ header, .content {
         line-height: 4rem;
         text-shadow: $tertiary .25rem .25rem 0, $primary .5rem .5rem 0, $secondary .75rem .75rem 0;
         
-        animation: tail 1s infinite;
+        animation: acid 1s infinite;
         animation-play-state: paused;
 
         &:hover {
@@ -124,6 +124,8 @@ p {
     background: $primary;
     margin: 0;
     top: 0;
+
+    z-index: 1;
 
     border-radius: 5px 5px 0 0;
 }
@@ -169,4 +171,32 @@ p {
     color: $black;
     position: relative;
     padding: 1rem;
+}
+
+.github-corner svg {
+    fill: $primary;
+}
+
+.github-corner:hover .octo-arm{
+    animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave{
+    0%,100%{
+        transform:rotate(0)
+    }
+    20%,60%{ 
+        transform:rotate(-25deg)
+    }
+    40%,80%{
+        transform:rotate(10deg)
+    }
+}
+@media (max-width:500px){
+    .github-corner:hover .octo-arm{
+        animation:none
+    }
+    .github-corner .octo-arm{
+        animation:octocat-wave 560ms ease-in-out
+    }
 }
