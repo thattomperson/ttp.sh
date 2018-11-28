@@ -1,10 +1,6 @@
 function platform(newPlatform) {
-	var platforms = ['macos', 'windows', 'linux'];
-	window.localStorage.platform = newPlatform ? newPlatform : platforms[0];
-	for (var i = 0, platform; platform = platforms[i]; i++) {
-		document.body.classList.remove('platform-' + platform);
-	}
-	document.body.classList.add('platform-' + window.localStorage.platform);
+	window.localStorage.platform = newPlatform
+	document.body.setAttribute('platform', newPlatform)
 }
 function main() {
 	window.setTimeout(function() {
@@ -16,11 +12,9 @@ function main() {
 
 function detectPlatform() {
 	var platform = window.navigator.platform.toLowerCase();
-	return platform.indexOf('mac') >= 0 
-		? 'macos' 
-		: platform.indexOf('win') >= 0 
-			? 'windows' 
-			: 'linux'
+	return ['linux', 'mac', 'win'].find((a) => {
+		return platform.indexOf(a) >= 0
+	})
 }
 
 // `DOMContentLoaded` may fire before your script has a chance to run, so check before adding a listener
