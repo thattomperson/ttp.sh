@@ -1,0 +1,15 @@
+---
+label: Site
+hide_body: false
+is_partial: false
+fields:
+- type: image_gallery
+  label: Gallery
+  name: gallery
+- type: blocks
+  name: body
+  label: Body
+  config:
+    min: '1'
+  template_types:
+  - site-component
