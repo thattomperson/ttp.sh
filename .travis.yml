@@ -1,9 +1,7 @@
 before_install:
-  - curl -L https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_0.52_Linux-64bit.tar.gz > /tmp/hugo.tar.gz
-  - tar -xzf /tmp/hugo.tar.gz -C /usr/local/bin
-  - chmod +x /usr/local/bin/hugo
+  - curl -sfL https://install.goreleaser.com/github.com/gohugoio/hugo.sh | sh
 
-script: build
+script: ./bin/hugo
 
 deploy:
   provider: pages
