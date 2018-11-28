@@ -33,4 +33,13 @@
     {{ .Content }}
 </div>
 
+{{ $scratch := newScratch }}
+{{ $scratch.Set "name" "hugo" }}
+{{ $scratch.Set "owner" "gohugoio" }}
+{{ $scratch.Set "project_name" "hugo_extended" }}
+{{ $path := printf "%s/%s" ($scratch.Get "name") "install" }}
+{{ $script := resources.Get "scripts/install" | resources.ExecuteAsTemplate $path $scratch }}
+<!--{{ $script.Permalink }}-->
+
+
 {{ end }}
