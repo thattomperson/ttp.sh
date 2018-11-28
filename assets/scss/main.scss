@@ -81,6 +81,10 @@ a {
 header, .content {
     padding: 2px;
 
+    h1, h2 {
+        user-select: none;
+    }
+
     h1 {
         width: 100%;
         text-align: center;
