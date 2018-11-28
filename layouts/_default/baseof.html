@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TTP Development</title>
     {{ block "meta" . }} {{ end }}
-    {{ $style := resources.Get "sass/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint "sha512" }}
     {{ if .RSSLink }}<link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />{{ end }}
+    
+    {{ $style := resources.Get "css/main.scss" | toCSS | minify | fingerprint "sha512" }}
     <link rel="stylesheet" integrity="{{ $style.Data.Integrity }}" href="{{ $style.RelPermalink }}">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    {{ $noscript := resources.Get "sass/noscript.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint "sha512" }}
-    <noscript><link rel="stylesheet" integrity="{{ $noscript.Data.Integrity }}" href="{{ $noscript.RelPermalink }}"></noscript>
   </head>
-  <body class="is-preload platform-macos">
-    <div id="wrapper">
-      <header id="header" class="alt">
-        <h1>{{ .Page.Title }}</h1>
+  <body platform="macos">
+    <div class="wrapper">
+      <header class="header">
+        <h1>{{ .Site.Title }}</h1>
       </header>
-      <nav id="nav">
+      <nav class="nav">
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/project">Projects</a></li>
@@ -26,13 +26,11 @@
       </nav>
       {{ block "main" . }} {{ end }}
       <footer id="footer">
-        <p class="copyright">
-          &copy; ttp.sh. Design: <a href="https://html5up.net">HTML5 UP</a>.
-        </p>
+        <p class="copyright">&copy; ttp.sh.</p>
       </footer>
     </div>
 
-    {{ $script := resources.Get "js/main.js" | resources.Minify | resources.Fingerprint "sha512" }}
+    {{ $script := resources.Get "js/main.js" | minify | fingerprint "sha512" }}
     <script type="text/javascript" src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
 
     {{ template "_internal/google_analytics_async.html" . }}

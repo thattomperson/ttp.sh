@@ -1,17 +1,18 @@
 {{ define "main" }}
-<div id="main">
+<div class="main">
   <!-- Introduction -->
-  <section class="main">
-    <div class="spotlight">
-      <div class="content">
-        <!-- Ranges through content/post/*.md -->
-        {{ range .Pages }}
-            <h2><a href="{{.Permalink}}">{{.Title}}</a></h2>
-            <p>{{ .Summary }}</p>
-            
-        {{ end }}
-      </div>
-    </div>
-  </section>
+  <!-- Ranges through content/post/*.md -->
+  <header class="header">
+    <h2>All Projects</h2>
+  </header>
+  {{ range .Pages }}
+      <h3><a href="{{.Permalink}}">{{.Title}}</a></h3>
+      <p>{{ .Summary }}</p>
+      
+  {{ end }}
+  {{ range .Pages }}
+      <h3><a href="{{.Permalink}}">{{.Title}}</a></h3>
+      <p>{{ .Summary }}</p>
+  {{ end }}
 </div>
 {{ end }}

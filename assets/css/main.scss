@@ -1,0 +1,172 @@
+
+$primary: #ff3366;
+$primary-light: #ff6f93;
+$primary-dark: #c5003c;
+$secondary: #94d1eb;
+$secondary-light: #c7ffff;
+$secondary-dark: #63a0b9;
+$secondary-darker: #4a8096;
+$tertiary: #2ec4b6;
+$black: #201f22;
+$white: #f8f6f7;
+
+html, body {
+    margin: 0;
+    padding: 0;
+
+    font-size: 16px;
+    word-spacing: 0.05px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(30deg, 
+        $secondary 6%, $secondary 6.95%,
+        $primary-dark 7%, $primary-light, 9%, $primary-light, 12%,
+        #000 12%, $black 13%, $black 60%,
+        $primary-dark 60.05%, $primary, 62%, $primary-light 75%,
+        $secondary-dark 75.05%, $secondary 76%, $secondary-light 100%
+    );
+
+    min-height: 100vh;
+
+    color: $white;
+}
+
+a {
+    color: $secondary;
+
+    .content &:not(.button)[href^=http]::after {
+        content: " \f08e";
+        font-family: 'FontAwesome';
+        font-size: 80%;
+    }
+
+    &:visited {
+        color: $secondary-darker;
+    }
+}
+
+
+@keyframes tail {
+    @for $i from 0 through 33 {
+        #{$i}% { 
+            text-shadow: 
+                $secondary #{$i/100 / 34 * 25}rem #{$i/100 / 34 * 25}rem 0,
+                $tertiary #{$i/100 / 34 * 25 + .25}rem #{$i/100 / 34 * 25 + .25}rem 0,
+                $primary #{$i/100 / 34 * 25 + .50}rem #{$i/100 / 34 * 25 + .50}rem 0,
+                $secondary .75rem .75rem 0;
+        }
+    }
+    @for $i from 0 through 32 {
+        #{$i + 34}% { 
+            text-shadow: 
+                $primary #{$i/100 / 33 * 25}rem #{$i/100 / 33 * 25}rem 0,
+                $secondary #{$i/100 / 33 * 25 + .25}rem #{$i/100 / 33 * 25 + .25}rem 0,
+                $tertiary #{$i/100 / 33 * 25 + .50}rem #{$i/100 / 33 * 25 + .50}rem 0,
+                $primary .75rem .75rem 0;
+        }
+    }
+    @for $i from 0 through 32 {
+        #{$i + 67}% { 
+            text-shadow: 
+                $tertiary #{$i/100 / 33 * 25}rem #{$i/100 / 33 * 25}rem 0, 
+                $primary #{$i/100 / 33 * 25 + .25}rem #{$i/100 / 33 * 25 + .25}rem 0,
+                $secondary #{$i/100 / 33 * 25 + .50}rem #{$i/100 / 33 * 25 + .50}rem 0,
+                $tertiary .75rem .75rem 0;
+        }
+    }
+}
+
+header, .content {
+    padding: 2px;
+
+    h1 {
+        width: 100%;
+        text-align: center;
+        font-size: 4rem;
+        line-height: 4rem;
+        text-shadow: $tertiary .25rem .25rem 0, $primary .5rem .5rem 0, $secondary .75rem .75rem 0;
+        
+        animation: tail 1s infinite;
+        animation-play-state: paused;
+
+        &:hover {
+            animation-play-state: running;
+        }
+    }
+    
+    h2 {
+        font-size: 2rem;
+        display: inline-block;
+        margin: 1rem 1rem 0 1rem;
+        padding: 0;
+
+        &:after {
+            content: " ";
+            border-radius: 2px;
+            display: block;
+            width: calc(100% + 2rem);
+            margin-left: -1rem;
+            height: 4px;
+            background: linear-gradient(to right, $primary, $secondary, $tertiary)
+        }
+    }    
+}
+
+p {
+    font-size: 1.25rem;
+}
+
+
+.nav { 
+    position: sticky;
+    background: $primary;
+    margin: 0;
+    top: 0;
+
+    border-radius: 5px 5px 0 0;
+}
+
+.nav ul {
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: .25rem;
+
+    li {
+        margin-left: .1rem;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        a {
+            color: $white;
+            font-size: 1.25rem;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 1rem;
+            display: inline-block;
+            border-radius: 5px;
+
+            &:hover {
+                color: $white;
+                background: rgba(255, 255, 255, .1);
+            }
+        }
+    }
+}
+
+.wrapper {
+    width: 85%;
+    margin: auto;
+}
+
+.main {
+    background: $white;
+    color: $black;
+
+    padding: 1rem;
+}
