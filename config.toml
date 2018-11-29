@@ -16,4 +16,4 @@ googleAnalytics = "UA-129311505-1"
 
 
 [permalinks]
-  project = "/:title/"
+  projects = "/:title/"

@@ -1,0 +1,4 @@
+
+{{ $script := resources.Get "js/main.js" | minify | fingerprint "sha512" }}
+<script type="text/javascript" src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+{{ template "_internal/google_analytics_async.html" . }}

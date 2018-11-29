@@ -3,10 +3,10 @@
   <!-- Introduction -->
   <!-- Ranges through content/post/*.md -->
   <header class="header">
-    <h1>All Projects</h1>
+    <h1>All {{ humanize .Page.Title | title }}</h1>
   </header>
   <div class="content">
-  {{ range .Pages }}
+  {{ range .Data.Pages }}
       <h3><a href="{{ .RelPermalink }}">{{.Title}}</a></h3>
       <p>{{ .Summary }}</p>
   {{ end }}

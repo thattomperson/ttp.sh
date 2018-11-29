@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language.Lang }}">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ .Site.Title }}</title>
-    {{ block "meta" . }} {{ end }}
-    {{ if .RSSLink }}<link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />{{ end }}
-    
-    {{ $style := resources.Get "scss/main.scss" | toCSS | minify | fingerprint "sha512" }}
-    <link rel="stylesheet" integrity="{{ $style.Data.Integrity }}" href="{{ $style.RelPermalink }}">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
+  {{ partial "head" . }}
   <body>
     <div class="wrapper">
       <header class="header">
@@ -21,7 +9,7 @@
       <nav class="nav primary">
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="/project">Projects</a></li>
+          <li><a href="/projects">Projects</a></li>
         </ul>
       </nav>
       {{ block "main" . }} {{ end }}
@@ -29,10 +17,6 @@
         <p class="copyright">&copy; ttp.sh.</p>
       </footer>
     </div>
-
-    {{ $script := resources.Get "js/main.js" | minify | fingerprint "sha512" }}
-    <script type="text/javascript" src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
-
-    {{ template "_internal/google_analytics_async.html" . }}
+    {{ partial "scripts" . }}
   </body>
 </html>

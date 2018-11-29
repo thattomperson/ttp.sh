@@ -7,6 +7,7 @@ tags:
 - server
 - development
 repo: https://github.com/thattomperson/dev-server
+golang: true
 ---
 
 # Dev Server
