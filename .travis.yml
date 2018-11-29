@@ -1,5 +1,4 @@
-before_install:
-  - curl -sfL https://ttp.sh/hugo/install | sh
+before_install: curl -sfL https://ttp.sh/hugo/install | bash
 
 script: ./bin/hugo
 
