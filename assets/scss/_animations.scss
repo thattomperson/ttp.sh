@@ -1,0 +1,44 @@
+
+@keyframes acid {
+    @for $i from 0 through 33 {
+        #{$i}% { 
+            text-shadow:
+                $secondary #{$i/100 / 34 * 25}rem #{$i/100 / 34 * 25}rem 0,
+                $tertiary #{$i/100 / 34 * 25 + .25}rem #{$i/100 / 34 * 25 + .25}rem 0,
+                $primary #{$i/100 / 34 * 25 + .50}rem #{$i/100 / 34 * 25 + .50}rem 0,
+                $secondary .75rem .75rem 0;
+        }
+    }
+    @for $i from 0 through 32 {
+        #{$i + 34}% { 
+            text-shadow: 
+                $primary #{$i/100 / 33 * 25}rem #{$i/100 / 33 * 25}rem 0,
+                $secondary #{$i/100 / 33 * 25 + .25}rem #{$i/100 / 33 * 25 + .25}rem 0,
+                $tertiary #{$i/100 / 33 * 25 + .50}rem #{$i/100 / 33 * 25 + .50}rem 0,
+                $primary .75rem .75rem 0;
+        }
+    }
+    @for $i from 0 through 32 {
+        #{$i + 67}% { 
+            text-shadow: 
+                $tertiary #{$i/100 / 33 * 25}rem #{$i/100 / 33 * 25}rem 0, 
+                $primary #{$i/100 / 33 * 25 + .25}rem #{$i/100 / 33 * 25 + .25}rem 0,
+                $secondary #{$i/100 / 33 * 25 + .50}rem #{$i/100 / 33 * 25 + .50}rem 0,
+                $tertiary .75rem .75rem 0;
+        }
+    }
+}
+
+
+
+@keyframes octocat-wave{
+    0%,100%{
+        transform:rotate(0)
+    }
+    20%,60%{ 
+        transform:rotate(-25deg)
+    }
+    40%,80%{
+        transform:rotate(10deg)
+    }
+}

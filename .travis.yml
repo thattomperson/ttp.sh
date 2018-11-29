@@ -6,7 +6,7 @@ addons:
     channel: extended
 
 script:
-  - hugo
+  - hugo --minify
 
 deploy:
   provider: pages

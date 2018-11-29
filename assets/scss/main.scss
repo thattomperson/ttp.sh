@@ -11,6 +11,7 @@ $black: #201f22;
 $white: #f8f6f7;
 
 @import 'breakpoints';
+@import 'animations';
 
 @include breakpoints((
     xlarge:   ( 1281px,  1680px ),
@@ -31,17 +32,64 @@ html, body {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background: linear-gradient(45deg, 
-        $secondary 6%, $secondary 7%,
-        $primary-dark 7%, $primary-light, 9%, $primary-light, 12%,
-        #000 12%, $black 13%, $black 60%,
-        $primary-dark 60%, $primary, 62%, $primary-light 75%,
-        $secondary-dark 75%, $secondary 76%, $secondary-light 100%
-    );
-
-    min-height: 100vh;
-
+    background: $black;
     color: $white;
+    min-height: 100vh;
+}
+
+footer {
+    color: $secondary;
+    text-align: right;
+    padding: 1em;
+}
+
+body::before, body::after {
+    content: ' ';
+    z-index: -1;
+    display: block;
+    position: fixed;
+    background: $primary-light;
+    border-color: $secondary;
+    border-style: solid;
+    border-width: 0;
+    margin: 0;
+    padding: 0;
+    transform: rotate(-45deg);
+}
+
+body::before {
+    $primary-width: 300px;
+    $secondary-width: 300px;
+
+
+    $full-width: $primary-width + ($secondary-width * 2);
+    top: -$full-width/2;
+    right: -$full-width/2;
+
+    width: 40%;
+    min-width: $primary-width/2;
+    max-width: $primary-width;
+    height: $full-width;
+    border-right-width: $secondary-width * 2;
+    box-shadow: inset $primary 20px 0 20px 0px;
+    box-shadow: inset $primary 20px 0 20px 0px;
+}
+
+body::after {
+    $primary-width: 100px;
+    $secondary-width: 200px;
+
+    $full-width: $primary-width + ($secondary-width * 2);
+    bottom: -$full-width/2;
+    left: -$full-width/2;
+
+    width: 20%;
+    min-width: $primary-width/2;
+    max-width: $primary-width;
+    height: $full-width;
+
+    border-left-width: $secondary-width * 2;
+    box-shadow: inset $primary 20px 0 20px 0px;
 }
 
 a {
@@ -59,35 +107,6 @@ a {
 }
 
 
-@keyframes acid {
-    @for $i from 0 through 33 {
-        #{$i}% { 
-            text-shadow: 
-                $secondary #{$i/100 / 34 * 25}rem #{$i/100 / 34 * 25}rem 0,
-                $tertiary #{$i/100 / 34 * 25 + .25}rem #{$i/100 / 34 * 25 + .25}rem 0,
-                $primary #{$i/100 / 34 * 25 + .50}rem #{$i/100 / 34 * 25 + .50}rem 0,
-                $secondary .75rem .75rem 0;
-        }
-    }
-    @for $i from 0 through 32 {
-        #{$i + 34}% { 
-            text-shadow: 
-                $primary #{$i/100 / 33 * 25}rem #{$i/100 / 33 * 25}rem 0,
-                $secondary #{$i/100 / 33 * 25 + .25}rem #{$i/100 / 33 * 25 + .25}rem 0,
-                $tertiary #{$i/100 / 33 * 25 + .50}rem #{$i/100 / 33 * 25 + .50}rem 0,
-                $primary .75rem .75rem 0;
-        }
-    }
-    @for $i from 0 through 32 {
-        #{$i + 67}% { 
-            text-shadow: 
-                $tertiary #{$i/100 / 33 * 25}rem #{$i/100 / 33 * 25}rem 0, 
-                $primary #{$i/100 / 33 * 25 + .25}rem #{$i/100 / 33 * 25 + .25}rem 0,
-                $secondary #{$i/100 / 33 * 25 + .50}rem #{$i/100 / 33 * 25 + .50}rem 0,
-                $tertiary .75rem .75rem 0;
-        }
-    }
-}
 
 header, .content {
     padding: 2px;
@@ -205,17 +224,6 @@ p {
     animation: octocat-wave 560ms ease-in-out
 }
 
-@keyframes octocat-wave{
-    0%,100%{
-        transform:rotate(0)
-    }
-    20%,60%{ 
-        transform:rotate(-25deg)
-    }
-    40%,80%{
-        transform:rotate(10deg)
-    }
-}
 @media (max-width:500px){
     .github-corner:hover .octo-arm{
         animation:none
