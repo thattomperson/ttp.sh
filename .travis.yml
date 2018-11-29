@@ -2,7 +2,8 @@ dist: xenial
 
 addons:
   snaps:
-  - hugo
+  - name: hugo 
+    channel: extended
 
 script: 
   - hugo version
