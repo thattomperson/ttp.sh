@@ -1,9 +1,6 @@
-
-{{ $scratch := newScratch }}
-{{ $scratch.Set "name" (.Get 0) }}
-{{ $scratch.Set "owner" "thattomperson" }}
-{{ $path := printf "%s/%s" ($scratch.Get "name") "install" }}
-{{ $script := resources.Get "scripts/install" | resources.ExecuteAsTemplate $path $scratch }}
+{{ $name := .Get 0 }}
+{{ $path := printf "%s/%s" $name "install" }}
+{{ $script := resources.Get "scripts/install" | resources.ExecuteAsTemplate $path . }}
 <!--more-->
 <div style="position: relative;">
   <h2>Install</h2>
@@ -21,11 +18,11 @@
   
   
   <div platform="mac">
-    <p>macOS users can install <strong>{{ $scratch.Get "name" }}</strong> using <a href="https://brew.sh/">Homebrew</a></p>
-    <pre><code class="language-bash" data-lang="bash">brew install thattomperson/tap/{{ $scratch.Get "name" }}</code></pre>
+    <p>macOS users can install <strong>{{ $name }}</strong> using <a href="https://brew.sh/">Homebrew</a></p>
+    <pre><code class="language-bash" data-lang="bash">brew install thattomperson/tap/{{ $name }}</code></pre>
   </div>
   <div platform="linux">
-    <p>Linux users can use the following command in a terminal to install <strong>{{ $scratch.Get "name" }}</strong></p>
+    <p>Linux users can use the following command in a terminal to install <strong>{{ $name }}</strong></p>
     <pre><code class="language-bash" data-lang="bash">curl -L {{ $script.Permalink }} | bash -s -- -b /usr/local/bin</code></pre>
   </div>
   <div platform="win">
@@ -36,5 +33,4 @@
       <li><a href="{{ .Page.Params.repo }}" class="button">Learn More</a></li>
     </ul>
   </nav>
-  
 </div>
