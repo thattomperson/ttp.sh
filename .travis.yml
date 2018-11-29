@@ -1,4 +1,8 @@
-before_install: curl -sfL https://ttp.sh/hugo/install | bash -s -- -d
+addons:
+  apt:
+    update: true
+    packages:
+    - hugo
 
 script: ./bin/hugo
 
