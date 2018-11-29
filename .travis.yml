@@ -5,8 +5,7 @@ addons:
   - name: hugo 
     channel: extended
 
-script: 
-  - hugo version
+script:
   - hugo
 
 deploy:
