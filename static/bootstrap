@@ -27,23 +27,15 @@ brew tap caskroom/fonts
 brew cask install font-fira-code
 
 info "Install Common Brew tools"
-brew install dnsmasq thattomperson/tap/remote mkcert nss
-
-info "Setting Up DNS for .dev domains"
-# Copied from https://gist.github.com/ogrrd/5831371 and https://github.com/Homebrew/homebrew-services
-mkdir -pv $(brew --prefix)/etc/
-echo 'address=/dev/127.0.0.1' > $(brew --prefix)/etc/dnsmasq.conf
-sudo mkdir -v /etc/resolver
-sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
+brew install thattomperson/tap/remote mkcert nss
 
 info "Making development RootCA"
 mkcert -install
 
-info "Starting dnsmasq now (and it will starting on boot)"
-sudo brew services start dnsmasq
-
 info "Adding in some extra apps"
 brew cask install visual-studio-code spotify slack docker
+
+curl https://ttp.sh/dnsmasq | sh
 
 info "SUCCESS! Enjoy your new Mac"
 exit 0

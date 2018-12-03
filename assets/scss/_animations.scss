@@ -1,3 +1,21 @@
+@mixin acid($colors, $offset) {
+    $n: $offset / length($colors);
+
+    @for $i from 0 through 99 { 
+        #{$i}% { 
+            @for $c from 1 through length($colors) {
+                text-shadow: nth($colors, $c) #{$i/100 * $n } #{$i/100 * $n} 0;
+            }
+        }
+    }
+}
+
+
+@keyframes acid1 {
+    @include acid([$primary, $secondary], 1rem);
+}
+
+// acid(acid, [$primary, $secondary], .75rem)
 
 @keyframes acid {
     @for $i from 0 through 33 {

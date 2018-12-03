@@ -12,8 +12,8 @@
     {{ end }}
 
     {{ if .RSSLink }}<link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />{{ end }}
-    {{ $style := resources.Get "scss/main.scss" | toCSS | minify | fingerprint "sha512" }}
+    {{ $style := resources.Get "scss/main.scss" | toCSS   }}
 
-    <link rel="stylesheet" integrity="{{ $style.Data.Integrity }}" href="{{ $style.RelPermalink }}">
+    <link rel="stylesheet"  href="{{ $style.RelPermalink }}">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
