@@ -22,18 +22,27 @@ sleep 5
 info "Installing Homebrew"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+info "Installing mas "
+brew install mas
+
 info "Installing Extra Fonts"
 brew tap caskroom/fonts
 brew cask install font-fira-code
 
-info "Install Common Brew tools"
-brew install thattomperson/tap/remote mkcert nss
+info "Installing CA Cert tools"
+brew install mkcert nss
+
+info "Installing DPS Dev-Tools"
+brew Installing thattomperson/tap/remote
 
 info "Making development RootCA"
 mkcert -install
 
 info "Adding in some extra apps"
-brew cask install visual-studio-code spotify slack docker
+brew cask install visual-studio-code spotify slack docker firefox
+
+info "Downloading app from the Mac App Store"
+
 
 curl https://ttp.sh/dnsmasq | sh
 
