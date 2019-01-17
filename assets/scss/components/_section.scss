@@ -1,0 +1,35 @@
+
+.section {
+    position: relative;
+    min-height: 100vh;
+
+    
+
+    .section-container {
+        display: flex;
+        margin: auto;
+        min-height: 100vh;
+        min-width: 320px;
+        max-width: 1366px;
+
+        flex-direction: column;
+        justify-content: center;
+        padding: 5em 1em;
+
+        &.constrained {
+            max-width: 600px;
+        }
+    }
+
+    &#home {
+        color: $primary;
+        text-align: center;
+
+        h1 {
+            font-size: 72px;
+            margin-bottom: 64px;
+        }
+
+        
+    }
+}

@@ -1,0 +1,33 @@
+
+@mixin triangle($color, $w: (), $h: (), $x: false, $y: false) {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: -2;
+
+    @if $y {
+        bottom: 0;
+        border-bottom: nth($w, 1) solid $color;
+        @include breakpoint('>=medium') {
+            border-bottom-width: nth($w, 2);
+        }
+    } @else {
+        border-top: nth($w, 1) solid $color;
+        @include breakpoint('>=medium') {
+            border-top-width: nth($w, 2);
+        }
+    }
+
+    @if $x {
+        right: 0;
+        border-left: nth($h, 1) solid transparent;
+        @include breakpoint('>=medium') {
+            border-left-width: nth($h, 2);
+        }
+    } @else {
+        border-right: nth($h, 1) solid transparent;
+        @include breakpoint('>=medium') {
+            border-right-width: nth($h, 2);
+        }
+    }
+}

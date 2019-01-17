@@ -1,284 +1,34 @@
-$black: #201f22;
-$white: #f8f6f7;
+@import 'theme';
 
-$primary: #ff3366;
-$primary-light: mix($white, $primary, 20%); // #ff6f93
-$primary-dark: mix($black, $primary, 12%); // #c5003c
-$primary-darker: mix($black, $primary, 20%); // #4a8096;
-
-$secondary: #94d1eb;
-$secondary-light: mix($white, $secondary, 20%); // #c7ffff
-$secondary-dark: mix($black, $secondary, 12%); // #63a0b9;
-$secondary-darker: mix($black, $secondary, 20%); // #4a8096;
-
-$tertiary: #FFF533; // $b47eb3
-$tertiary-light: mix($white, $tertiary, 20%); // #c7ffff
-$tertiary-dark: mix($black, $tertiary, 12%); // #63a0b9;
-$tertiary-darker: mix($black, $tertiary, 20%); // #4a8096;
-
-
-
-@import 'breakpoints';
-@import 'animations';
+@import 'libs/breakpoints';
+@import 'libs/triangle';
 
 @include breakpoints((
-    xlarge:   ( 1281px,  1680px ),
+    xlarge:   '(min-width: 1281px)',
     large:    ( 981px,   1280px ),
     medium:   ( 737px,   980px  ),
     small:    ( 481px,   736px  ),
     xsmall:   ( 361px,   480px  ),
-    xxsmall:  ( null,    360px  )
+    xxsmall:  ( null,    360px  ),
 ));
 
-html, body {
-    margin: 0;
-    padding: 0;
+@import 'components/background';
+@import 'components/section';
+@import 'components/404';
 
-    font-size: 16px;
-    word-spacing: 0.05px;
+body, html {
+    padding: 0;
+    margin: 0;
+
+    font-family: Cabin;
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background: $black;
-    color: $white;
-    min-height: 100vh;
+* {
+    box-sizing: border-box;
 }
 
 footer {
-    color: $secondary-light;
-    text-align: right;
     padding: 1em;
-}
-
-body::before, body::after {
-    content: ' ';
-    z-index: -1;
-    display: block;
-    position: fixed;
-    background: $primary-light;
-    border-color: $secondary;
-    border-style: solid;
-    border-width: 0;
-    margin: 0;
-    padding: 0;
-    transform: rotate(-45deg);
-}
-
-body::before {
-    $primary-width: 300px;
-    $secondary-width: 300px;
-
-
-    $full-width: $primary-width + ($secondary-width * 2);
-    top: -$full-width/2;
-    right: -$full-width/2;
-
-    width: 40%;
-    min-width: $primary-width/2;
-    max-width: $primary-width;
-    height: $full-width;
-    border-right-width: $secondary-width * 2;
-    box-shadow: inset $primary 20px 0 20px 0px;
-    box-shadow: inset $primary 20px 0 20px 0px;
-}
-
-body::after {
-    $primary-width: 100px;
-    $secondary-width: 200px;
-
-    $full-width: $primary-width + ($secondary-width * 2);
-    bottom: -$full-width/2;
-    left: -$full-width/2;
-
-    width: 20%;
-    min-width: $primary-width/2;
-    max-width: $primary-width;
-    height: $full-width;
-
-    border-left-width: $secondary-width * 2;
-    box-shadow: inset $primary 20px 0 20px 0px;
-}
-
-a {
-    color: $secondary;
-
-    .content &:not(.button)[href^=http]::after {
-        content: " \f08e";
-        font-family: 'FontAwesome';
-        font-size: 80%;
-    }
-
-    &:visited {
-        color: $secondary-darker;
-    }
-}
-
-
-
-header, .content {
-    padding: 2px;
-
-    h1 {
-        text-align: center;
-        width: 100%;
-        user-select: none;
-        font-size: 4rem;
-        line-height: 4rem;
-        text-shadow: $tertiary .25rem .25rem 0, $primary .5rem .5rem 0, $secondary .75rem .75rem 0;
-        
-        animation: acid .5s infinite;
-        animation-play-state: paused;
-
-        &:hover {
-            animation-play-state: running;
-        }
-    }
-    
-    h2 {
-        font-size: 2rem;
-        padding: 0;
-        text-align: center;
-
-        margin: auto;
-        display: block;
-        width: 100%;
-        
-
-        &:after {
-            content: " ";
-            border-radius: 2px;
-            display: block;
-            width: calc(40% + 2rem);
-            margin-left: calc(30% + -1rem);
-            height: 4px;
-            background: linear-gradient(to right, $primary, $secondary, $tertiary)
-        }
-    }    
-}
-
-p {
-    font-size: 1.25rem;
-}
-
-.nav {
-    li {
-        margin-left: .5rem;
-
-        &:first-child {
-            margin-left: 0;
-        }
-    }
-
-    a {
-        color: $black;
-        font-size: 1.25rem;
-        font-weight: bold;
-        text-decoration: none;
-        padding: 1rem;
-        display: inline-block;
-        border-radius: 5px;
-        border: 1px solid $primary-light;
-
-        &:hover {
-            background: rgba(255, 51, 102, .1);
-        }
-    }
-}
-
-.nav.primary { 
-    position: sticky;
-    background: $primary;
-    color: $white;
-    margin: 0;
-    top: 0;
-
-    z-index: 1;
-
-    border-radius: 5px 5px 0 0;
-
-    a {
-        color: $white;
-        border: none;
-
-        &:hover {
-            background: rgba(255, 255, 255, .1);
-        }
-    }
-
-    
-}
-
-.nav ul {
-    margin: 0;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: .25rem;
-}
-
-.main {
-    background: $white;
-    color: $black;
-    position: relative;
-    padding: 1rem;
-}
-
-.github-corner svg {
-    fill: $primary;
-}
-
-.github-corner:hover .octo-arm{
-    animation: octocat-wave 560ms ease-in-out
-}
-
-@media (max-width:500px){
-    .github-corner:hover .octo-arm{
-        animation:none
-    }
-    .github-corner .octo-arm{
-        animation:octocat-wave 560ms ease-in-out
-    }
-}
-
-
-body [platform] {
-    display: none;
-}
-
-body[platform=mac] [platform*=mac],
-body[platform=win] [platform*=win],
-body[platform=linux] [platform*=linux] {
-    display: initial;
-}
-
-.wrapper {
-    width: 90%;
-    margin: auto;
-}
-
-@include breakpoint('>=medium') {
-    .wrapper {
-        width: 80%;
-    }
-}
-
-@include breakpoint('>=large') {
-    .wrapper {
-        width: 70%;
-    }
-}
-
-@include breakpoint('>=xlarge') {
-    .wrapper {
-        width: 65%;
-    }
-}
-
-pre {
-    overflow-x: hidden;
-    background: $black;
-    color: $white;
-    padding: 1rem;
-    border-radius: 5px;
+    min-height: 100px;
+    background: $primaryDark;
 }

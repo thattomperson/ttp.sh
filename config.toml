@@ -1,19 +1,8 @@
-baseURL = "https://ttp.sh/"
+baseURL = "https://ttp.sh"
 languageCode = "en-us"
-title = "ttp.sh"
-
-googleAnalytics = "UA-129311505-1"
-
-[privacy]
-  [privacy.googleAnalytics]
-    anonymizeIP = true
-    respectDoNotTrack = true
-    useSessionStorage = true
-  [privacy.twitter]
-    enableDNT = true
-  [privacy.youtube]
-    privacyEnhanced = true
-
+title = "Hey, I'm Tom"
 
 [permalinks]
-  projects = "/:title/"
+  golang = "/:title/"
+
+[taxonomies]
