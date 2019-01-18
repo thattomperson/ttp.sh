@@ -3,7 +3,11 @@
         {{ partial "background" 4 }}
         <div class="section-container">
             <h1>{{ .Title }}</h1>
-            <h2>I am the most stereotypical programmer and I like cooking<h2>
+            <div class="social">
+                {{ range $socials := .Params.social }}{{ range $name, $link := $socials }}
+                <i class="{{ $name }}"></i>
+                {{ end }}{{ end }}
+            </div>
         </div>
     </div>
     <div class="section" id="about">
@@ -17,6 +21,9 @@
     </div>
     <div class="section" id="writing">
         {{ partial "background" 3 }}
+        <div>
+            
+        <div>
     </div>
     <footer>
         

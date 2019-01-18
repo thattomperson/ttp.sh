@@ -4,12 +4,16 @@
 @import 'libs/triangle';
 
 @include breakpoints((
-    xlarge:   '(min-width: 1281px)',
-    large:    ( 981px,   1280px ),
-    medium:   ( 737px,   980px  ),
-    small:    ( 481px,   736px  ),
-    xsmall:   ( 361px,   480px  ),
-    xxsmall:  ( null,    360px  ),
+    // xlarge:   '(min-width: 1281px)',
+    // large:    ( 981px,   1280px ),
+    // medium:   ( 737px,   980px  ),
+    // small:    ( 481px,   736px  ),
+    // xsmall:   ( 361px,   480px  ),
+    // xxsmall:  ( null,    360px  ),
+
+    large:    '(min-width: 52em)',
+    medium:   ( 40em, 52em ),
+    small:    ( null, 40em ),
 ));
 
 @import 'components/background';
