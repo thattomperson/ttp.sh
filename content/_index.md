@@ -1,7 +1,16 @@
 ---
 Title: Hey, I'm Tom!
 social:
-- fab fa-github: https://github.com/thattomperson
-- fa fa-envelope: "#contact-me"
-- fab fa-twitter: https://twitter.com/thattomperson
+- link: https://github.com/thattomperson
+  icon: github
+  group: brands
+  title: Github
+- link: "#contact-me"
+  icon: envelope
+  group: regular
+  title: Contact Me
+- link: https://twitter.com/thattomperson
+  icon: twitter
+  group: brands
+  title: Twitter
 ---

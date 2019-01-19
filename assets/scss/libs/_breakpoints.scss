@@ -223,13 +223,19 @@
 	}
 
 @mixin scaled($rule, $s, $m: $s, $l: $m) {
-	$sizes: (12, 14, 16, 20, 24, 32, 48, 64, 72);
-	#{$rule}: #{nth($sizes, $s + 1)}px;
-	@include breakpoint('medium') {
-		#{$rule}: #{nth($sizes, $m + 1)}px;
-	}
+	@if type-of($rule) == "list" {
+		@each $r in $rule {
+			@include scaled($r, $s, $m, $l)
+		}
+	} @else {
+		$sizes: (12, 14, 16, 20, 24, 32, 48, 64, 72);
+		#{$rule}: #{nth($sizes, $s + 1)}px;
+		@include breakpoint('medium') {
+			#{$rule}: #{nth($sizes, $m + 1)}px;
+		}
 
-	@include breakpoint('large') {
-		#{$rule}: #{nth($sizes, $l + 1)}px;
+		@include breakpoint('large') {
+			#{$rule}: #{nth($sizes, $l + 1)}px;
+		}
 	}
 }

@@ -4,9 +4,11 @@
         <div class="section-container">
             <h1>{{ .Title }}</h1>
             <div class="social">
-                {{ range $socials := .Params.social }}{{ range $name, $link := $socials }}
-                <i class="{{ $name }}"></i>
-                {{ end }}{{ end }}
+                {{ range $social := .Params.social }}
+                    <a href="{{ $social.link }}" title="{{ $social.title }}">
+                        {{ partial "fa" $social }}
+                    </a>
+                {{ end }}
             </div>
         </div>
     </div>
@@ -23,7 +25,7 @@
         {{ partial "background" 3 }}
         <div>
             
-        <div>
+        </div>
     </div>
     <footer>
         

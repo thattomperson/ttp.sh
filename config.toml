@@ -1,6 +1,18 @@
-baseURL = "https://ttp.sh"
+baseURL = "https://ttp.sh/"
 languageCode = "en-us"
-title = "Hey, I'm Tom"
+title = "ttp.sh"
+
+googleAnalytics = "UA-129311505-1"
+
+[privacy]
+  [privacy.googleAnalytics]
+    anonymizeIP = true
+    respectDoNotTrack = true
+    useSessionStorage = true
+  [privacy.twitter]
+    enableDNT = true
+  [privacy.youtube]
+    privacyEnhanced = true
 
 [permalinks]
   golang = "/:title/"
