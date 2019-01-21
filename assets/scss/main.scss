@@ -17,6 +17,7 @@
 ));
 
 @import 'components/background';
+@import 'components/tooltip';
 @import 'components/section';
 @import 'components/404';
 
@@ -36,3 +37,5 @@ footer {
     min-height: 100px;
     background: $primaryDark;
 }
+
+@include mediaQueries

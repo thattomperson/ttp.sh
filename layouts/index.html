@@ -5,7 +5,7 @@
             <h1>{{ .Title }}</h1>
             <div class="social">
                 {{ range $social := .Params.social }}
-                    <a href="{{ $social.link }}" title="{{ $social.title }}">
+                    <a href="{{ $social.link }}" tooltip="{{ $social.title }}">
                         {{ partial "fa" $social }}
                     </a>
                 {{ end }}
