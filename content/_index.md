@@ -14,7 +14,7 @@ social:
   group: brands
   title: Twitter
 ---
-Hello 👋 I'm Mate a gatsby starter which is focus on simplicity and extensibility. It's build with Gatsby(duh), Rebass (styled-component system) and Contentful.
+Hello 👋 I'm Mate a gatsby starter which is focus on simplicity and extensibility. It's build with Gatsby(duh), [Rebass](https://jxnblk.com/rebass/) (styled-component system) and [Contentful](https://www.contentful.com/).
 
 The starter will give you 4 sections (it's really easy to add more if you want 😃):
 
