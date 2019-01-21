@@ -49,7 +49,7 @@
 
 
 // Writing
-#writing .background {
+#contact-me .background {
     :nth-child(1) {
         @include triangle($backgroundDark, (15vh, 10vh), (100vw, 100vw), true)
     }
