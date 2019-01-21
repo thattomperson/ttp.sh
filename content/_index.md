@@ -14,9 +14,9 @@ social:
   group: brands
   title: Twitter
 ---
-Hello 👋 I'm Mate a gatsby starter which is focus on simplicity and extensibility. It's build with Gatsby(duh), [Rebass](https://jxnblk.com/rebass/) (styled-component system) and [Contentful](https://www.contentful.com/).
+Hello :wave: I'm Mate a gatsby starter which is focus on simplicity and extensibility. It's build with Gatsby(duh), [Rebass](https://jxnblk.com/rebass/) (styled-component system) and [Contentful](https://www.contentful.com/).
 
-The starter will give you 4 sections (it's really easy to add more if you want 😃):
+The starter will give you 4 sections (it's really easy to add more if you want <span onhover=":smile:">:smiley:</span>):
 
 - [Landing:](#home) Displays a nice greeting with your name, also your roles (what you are) and all your social links.
 - [About:](#about) Show the about section where you can write about who you are, what you like to do, etc. Also you can add a photo next to it!

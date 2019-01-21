@@ -4,6 +4,8 @@ title = "ttp.sh"
 
 googleAnalytics = "UA-129311505-1"
 
+enableEmoji = true
+
 [privacy]
   [privacy.googleAnalytics]
     anonymizeIP = true

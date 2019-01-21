@@ -40,3 +40,17 @@ footer {
     min-height: 100px;
     background: $primaryDark;
 }
+
+
+[onhover]:hover {
+    position: relative;
+
+    &::after {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        content: attr(onhover);
+    }
+}
+
