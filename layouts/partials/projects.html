@@ -1,0 +1,60 @@
+<div class="section" id="projects">
+  {{ partial "background" 4 }}
+  <div class="section-container">
+    <h2>Projects {{ ":computer:" | emojify }}</h2>
+    <div class="cards">
+    {{ range . }}
+        <div class="card observe">
+            <div class="card-content">
+                <h3>{{ .Title }}</h3>
+                <p>{{ .Content }}</p>
+            </div>
+            <div class="card-image">
+                <!-- hero image -->
+                {{ $original := .Resources.GetMatch "logo.*" }}
+                <img src="{{ ($original.Fill "200x200").Permalink }}" alt="{{ .Title }}" />
+                
+                <div class="card-image-overlay">
+                    <div class="card-image-overlay-icons" style="float: right;">
+                        <div font-size="5" class="sc-bdVaJa dilfOL">
+                            <div
+                            class=""
+                            style="display: inline;"
+                            data-tooltipped=""
+                            aria-describedby="tippy-tooltip-4"
+                            data-original-title="Check repository"
+                            >
+                            <a
+                                href="https://github.com/facebook"
+                                target="_blank"
+                                color="blue"
+                                class="SocialLink__IconLink-dBlOti dVRRgh"
+                                ><span aria-hidden="true" class="fa fa-github"></span
+                            ></a>
+                            </div>
+                        </div>
+                        <div font-size="5" class="sc-bdVaJa dilfOL">
+                            <div
+                            class=""
+                            style="display: inline;"
+                            data-tooltipped=""
+                            aria-describedby="tippy-tooltip-5"
+                            data-original-title="See project"
+                            >
+                            <a
+                                href="http://facebook.com/"
+                                target="_blank"
+                                color="blue"
+                                class="SocialLink__IconLink-dBlOti dVRRgh"
+                                ><span aria-hidden="true" class="fa fa-globe"></span
+                            ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{ end }}
+    </div>
+  </div>
+</div>

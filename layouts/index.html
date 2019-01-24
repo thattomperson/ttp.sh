@@ -32,18 +32,8 @@
             </div>
         </div>
     </div>
-    <div class="section" id="projects">
-        {{ partial "background" 4 }}
-        <div class="section-container">
-            <h2>Projects {{ ":computer:" | emojify }}</h2>
-        </div>
-    </div>
-    <div class="section" id="contact-me">
-        {{ partial "background" 3 }}
-        <div class="section-container">
-            <h2>Contact me {{ ":mailbox:" | emojify }}</h2>
-        </div>
-    </div>
+    {{ partial "projects" (where .Data.Pages "Section" "projects") }}
+    {{ partial "contact" }}
     <footer>
         
     </footer>

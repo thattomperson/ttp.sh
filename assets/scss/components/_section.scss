@@ -63,6 +63,10 @@
             transform-origin: 50% 20.5px;
             will-change: transform;
             fill: $primary;
+
+            @include dark {
+                fill: $primaryLight;
+            }
         }
     }
 }
@@ -71,10 +75,10 @@
 .section {
     position: relative;
     min-height: 100vh;
+    z-index: 0;
 
     @include dark {
         background: #333333;
-        z-index: 0;
     }
 
     .section-container, .container-404 {
@@ -94,40 +98,12 @@
             max-width: 600px;
         }
 
-        h2 {
-            position: relative;
-            width: max-content;
-            color: $secondaryDark;
-
-            &::after, &::before {
-                position: absolute;
-                content: '';
-                bottom: -10px;
-                left: 0;
-                width: 100%;
-                height: 5px;
-                background: $primaryLight;
-                
-            }
-
-            &::after {
-                background: $secondaryLight;
-                width: 0%;
-                animation: slide-out 300ms ease-out;
-            }
-
-            &:hover::after {
-                animation: slide-in 300ms ease-out;
-                width: 100%;
-            }
-        }
-
         .content {
             margin: 1em 0;
             line-height: 2em;
 
             a {
-                color: initial;
+                color: unset;
                 text-decoration: none;
                 position: relative;
                 transition: color 200ms;
@@ -160,6 +136,9 @@
 
     &#home {
         color: $primary;
+        @include dark {
+            color: $primaryLight;
+        }
         text-align: center;
         
         h1 {
@@ -181,6 +160,9 @@
             svg {
                 @include scaled((width, height), 5, 6, 6);
                 fill: $primary;
+                @include dark {
+                    fill: $primaryLight;
+                }
             }
         }
     }

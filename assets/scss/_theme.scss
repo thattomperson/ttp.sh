@@ -2,6 +2,11 @@
 $background: #FFFFFF;
 $backgroundDark: #f0e6f6;
 
+
+$darkBackground: #2d2d2d;
+$backgroundLight: mix($darkBackground, #fff, 90);
+
+
 $primary: #7c37ad;
 $primaryLight: #ae66df;
 $primaryDark: #4b007d;

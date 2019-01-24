@@ -17,6 +17,10 @@
     </style>
 
     {{ template "_internal/google_analytics_async.html" . }}
+    <script>
+    {{- $scripts := resources.Get "js/main.js" | minify -}}
+    {{- $scripts.Content | safeJS -}}
+    </script>
 </head>
 <body>
     {{ block "main" . }}{{ end }}

@@ -2,16 +2,25 @@
 // Home
 #home .background {
     :nth-child(1) {
-        @include triangle($backgroundDark, (35vh, 70vh), (95vw, 60vw))
+        @include triangle($backgroundDark, (35vh, 70vh), (95vw, 60vw));
+        @include dark {
+            border-top-color: $backgroundLight;
+        }
     }
     :nth-child(2) {
         @include triangle($secondary,(38vh, 80vh),(50vw, 35vw))
     }
     :nth-child(3) {
-        @include triangle($primaryDark, (25vh, 35vh), (75vw, 60vw), true)
+        @include triangle($primaryDark, (25vh, 35vh), (75vw, 60vw), true);
+        @include dark {
+            border-top-color: $primary;
+        }
     }
     :nth-child(4) {
         @include triangle($backgroundDark, (20vh, 20vh), (100vw, 100vw), true, true);
+        @include dark {
+            border-bottom-color: $backgroundLight;
+        }
     }
 }
 
@@ -24,7 +33,10 @@
         @include triangle($primaryDark, (20vh, 40vh), (75vw, 70vw), true)
     }
     :nth-child(3) {
-        @include triangle($backgroundDark, (25vh, 20vh), (100vw, 100vw))
+        @include triangle($backgroundDark, (25vh, 20vh), (100vw, 100vw));
+        @include dark {
+            border-top-color: $backgroundLight;
+        }
     }
 }
 
@@ -34,16 +46,22 @@
 // Projects
 #projects .background {
     :nth-child(1) {
-        @include triangle($secondaryLight, (80vh, 80vh), (100vw, 100vw), true)
+        @include triangle($secondaryLight, (80vh, 80vh), (100vw, 100vw), true);
     }
     :nth-child(2) {
-        @include triangle($background, (50vh, 20vh), (50vw, 50vw), true)
+        @include triangle($background, (50vh, 20vh), (50vw, 50vw), true);
+        @include dark {
+            border-top-color: $darkBackground;
+        }
     }
     :nth-child(3) {
-        @include triangle($primaryDark, (25vh, 40vh), (75vw, 60vw), true, true)
+        @include triangle($primaryDark, (25vh, 40vh), (75vw, 60vw), true, true);
     }
     :nth-child(4) {
-        @include triangle($backgroundDark, (25vh, 20vh), (100vw, 100vw), false, true)
+        @include triangle($backgroundDark, (25vh, 20vh), (100vw, 100vw), false, true);
+        @include dark {
+            border-bottom-color: $backgroundLight;
+        }
     }
 }
 
@@ -51,24 +69,30 @@
 // Writing
 #contact-me .background {
     :nth-child(1) {
-        @include triangle($backgroundDark, (15vh, 10vh), (100vw, 100vw), true)
+        @include triangle($backgroundDark, (15vh, 10vh), (100vw, 100vw), true);
+        @include dark {
+            border-top-color: $backgroundLight;
+        }
     }
     :nth-child(2) {
-        @include triangle($secondary, (50vh, 40vh), (70vw, 40vw), false, true)
+        @include triangle($secondary, (50vh, 40vh), (70vw, 40vw), false, true);
     }
     :nth-child(3) {
-        @include triangle($primaryDark, (40vh, 15vh), (100vw, 100vw), true, true)
+        @include triangle($primaryDark, (40vh, 15vh), (100vw, 100vw), true, true);
     }
 }
 
 #p-404 .background {
     :nth-child(1) {
-        @include triangle($backgroundDark, (35vh, 80vh), (95vw, 60vw))
+        @include triangle($backgroundDark, (35vh, 80vh), (95vw, 60vw));
+        @include dark {
+            border-top-color: $backgroundLight;
+        }
     }
     :nth-child(2) {
-        @include triangle($primary, (25vh, 35vh), (75vw, 60vw), true)
+        @include triangle($primary, (25vh, 35vh), (75vw, 60vw), true);
     }
     :nth-child(3) {
-        @include triangle($secondaryLight, (10vh, 20vh), (50vw, 50vw), true, true)
+        @include triangle($secondaryLight, (10vh, 20vh), (50vw, 50vw), true, true);
     }
 }
