@@ -6,7 +6,7 @@
             <div class="social">
                 {{ range $social := .Params.social }}
                     <a href="{{ $social.link }}" tooltip="{{ $social.title }}">
-                        {{ partial "fa" $social }}
+                        <i class="fa-{{ $social.icon }}"></i>
                     </a>
                 {{ end }}
             </div>
@@ -28,7 +28,11 @@
         <div class="section-container">
             <h2>About me {{ ":man:" | emojify }}</h2>
             <div class="content">
+                <div>
                 {{ .Content }}
+                </div>
+                {{ $snowy := resources.Get "snowy.png" }}
+                <img src="{{ ($snowy.Fill "300x300").Permalink }}">
             </div>
         </div>
     </div>

@@ -102,6 +102,31 @@
             margin: 1em 0;
             line-height: 2em;
 
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+
+            div {
+                width: 100%;
+                display: inline-block;
+
+                @include breakpoint('large') {
+                    width: 66%;
+                }
+            }
+            img {
+                border-radius: 50%;
+                padding: 50px;
+                width: 100%;
+                display: inline-block;
+                margin: auto;
+                @include breakpoint('large') {
+                    width: 34%;
+                }
+            }
+
             a {
                 color: unset;
                 text-decoration: none;
@@ -157,11 +182,11 @@
                 margin-right: 16px;
             }
             
-            svg {
-                @include scaled((width, height), 5, 6, 6);
-                fill: $primary;
+            i {
+                @include scaled(font-size, 5, 6, 6);
+                color: $primary;
                 @include dark {
-                    fill: $primaryLight;
+                    color: $primaryLight;
                 }
             }
         }

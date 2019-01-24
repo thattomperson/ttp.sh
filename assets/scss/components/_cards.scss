@@ -16,10 +16,10 @@
     -webkit-transition: all 0.25s;
     transition: all 0.25s;
     top: 0;
-    height: 100%;
     width: 100%;
     cursor: default;
     display: flex;
+    height: 200px;
 }
 .card:hover {
     top: -10px;
@@ -47,5 +47,32 @@
         height: 200px;
         padding: 40px;
         margin-top: 0px;
+    }
+
+    .card-image-overlay {
+        position: relative;
+        height: 200px;
+        top: -204px;
+
+        @include scaled(font-size, 5)
+    }
+
+    .card-image-overlay-icons {
+        float: right;
+        box-sizing: border-box;
+        display: flex;
+
+        a {
+            box-sizing: border-box;
+            padding: 4px;
+            text-decoration: none;
+            color: $primary;
+
+            transition: color 500ms;
+
+            &:hover {
+                color: $primaryLight;
+            }
+        }
     }
 }
