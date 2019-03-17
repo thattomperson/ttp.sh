@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "ttp.sh",
+  "alias": "ttp.sh",
   "builds": [
     { "src": "package.json", "use": "@now/static-build" }
   ]
