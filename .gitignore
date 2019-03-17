@@ -4,3 +4,4 @@ resources
 static/fonts
 assets/scss/components/_fonts.scss
 node_modules
+dist/
