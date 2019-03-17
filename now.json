@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "ttp.sh",
+  "builds": [
+    { "src": "package.json", "use": "@now/static-build" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/dist/index.html" }
+  ]
+}

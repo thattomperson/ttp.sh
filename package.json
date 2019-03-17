@@ -1,12 +1,13 @@
 {
     "scripts": {
-        
         "prebuild": "mkdir -p static/fonts && icon-font-generator -p fa -n fa --cssfontsurl /fonts --csspath ./assets/scss/components/_fonts.scss ./assets/fontawesome/{brands/{github,twitter},regular/envelope,solid/globe-americas}.svg -o static/fonts",
         "build": "hugo --minify",
+        "now-build": "npm run build -- -d dist",
         "prestart": "npm run prebuild",
         "start": "hugo serve"
     },
     "dependencies": {
+        "hugo-cli": "^0.10.0",
         "icon-font-generator": "^2.1.10"
     }
 }
