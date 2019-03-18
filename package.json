@@ -2,7 +2,7 @@
     "scripts": {
         "prebuild": "mkdir -p static/fonts && icon-font-generator -p fa -n fa --cssfontsurl /fonts --csspath ./assets/scss/components/_fonts.scss ./assets/fontawesome/{brands/{github,twitter},regular/envelope,solid/globe-americas}.svg -o static/fonts",
         "build": "hugo --minify",
-        "prenow-build": "yum install glibc",
+        "prenow-build": "yum update glibc",
         "now-build": "npm run build -- -d dist",
         "prestart": "npm run prebuild",
         "start": "hugo serve"
