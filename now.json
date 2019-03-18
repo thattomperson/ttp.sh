@@ -5,7 +5,9 @@
   "builds": [
     { "src": "package.json", "use": "@now/static-build" }
   ],
-  "env": {
-    "HUGO_VERSION": "extended_0.52.0"
+  "build": {
+    "env": { 
+      "HUGO_VERSION": "extended_0.52.0"
+    }
   }
 }
