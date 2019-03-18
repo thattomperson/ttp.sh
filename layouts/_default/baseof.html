@@ -12,7 +12,7 @@
     {{- template "_internal/twitter_cards.html" . }}
 
     <style>
-    {{- $styles := resources.Get "scss/main.scss" | toCSS | minify -}}
+    {{- $styles := resources.Get "css/main.css" | minify -}}
     {{- $styles.Content | safeCSS -}}
     </style>
 

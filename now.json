@@ -4,10 +4,5 @@
   "alias": "ttp.sh",
   "builds": [
     { "src": "package.json", "use": "@now/static-build" }
-  ],
-  "build": {
-    "env": { 
-      "HUGO_VERSION": "extended_0.54.0"
-    }
-  }
+  ]
 }
