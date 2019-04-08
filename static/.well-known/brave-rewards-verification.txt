@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: ttp.sh 
+Token: 3c5c5fa1718e79071dff3122b00e031fec2d9050668eed34b8f541e9cae77d19
