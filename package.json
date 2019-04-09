@@ -1,8 +1,7 @@
 {
   "scripts": {
     "icon-font": "mkdir -p static/fonts && icon-font-generator -p fa -n fa --cssfontsurl /fonts --csspath ./assets/scss/components/_fonts.scss ./assets/fontawesome/{brands/{github,twitter},regular/envelope,solid/globe-americas}.svg -o static/fonts",
-    "rollup": "rollup -c",
-    "prebuild": "npm run rollup && npm run icon-font",
+    "prebuild": "npm run icon-font",
     "build": "hugo --minify",
     "now-build": "npm run build -- -d dist",
     "prestart": "npm run prebuild",
