@@ -1,5 +1,3 @@
-
-
 {{ $name := .Get 0 }}
 {{ $path := printf "js/%s.js" $name }}
 {{ $script := resources.Get $path | resources.Minify | resources.Fingerprint "sha512" }}
