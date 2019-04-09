@@ -794,3 +794,92 @@ footer {
   margin: auto;
   content: attr(onhover);
 }
+#contract h2::after,
+#contract h3::after,
+#contract h2::before,
+#contract h3::before
+{
+  content: none;
+}
+
+
+#contract {
+  font-size: 1.5em;
+  line-height: 1.5
+}
+
+#contract h3 {
+  margin-top: 1em;
+  margin-bottom: 0;
+  font-size: 1em;
+  text-transform: none;
+}
+
+#contract .background :nth-child(1) {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: -2;
+  border-top: 35vh solid #f0e6f6;
+  border-right: 95vw solid transparent;
+}
+
+#contract .background :nth-child(2) {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: -2;
+  border-top: 38vh solid #ff4081;
+  border-right: 50vw solid transparent;
+}
+
+#contract .background :nth-child(3) {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: -2;
+  border-top: 25vh solid #4b007d;
+  right: 0;
+  border-left: 75vw solid transparent;
+}
+
+#contract .background :nth-child(4) {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: -2;
+  bottom: 0;
+  border-bottom: 40vh solid #f0e6f6;
+  right: 0;
+  border-left: 65vw solid transparent;
+}
+
+#contract .background :nth-child(5) {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: -2;
+  bottom: 0;
+  border-bottom: 15vh solid #ff4081;
+  border-right: 70vw solid transparent;
+}
+
+#contract .background :nth-child(6) {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: -2;
+  bottom: 0;
+  border-bottom: 20vh solid #4b007d;
+  right: 0;
+  border-left: 80vw solid transparent;
+}
+
+@media print {
+  .background {
+    display: none;
+  }
+  #contract {
+    font-size: 1em;
+  }
+}
