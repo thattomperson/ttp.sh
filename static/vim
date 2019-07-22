@@ -1,0 +1,11 @@
+#! /bin/sh
+
+apk add vim;
+mkdir ~/.vim/;
+mkdir ~/.vim/bundle;
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim;
+
+vim +PluginInstall +qall;
+
+curl -L https://ttp.sh/vimrc > ~/.vim/vimrc
