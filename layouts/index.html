@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-    {{ partial "projects" (where .Data.Pages "Section" "projects") }}
+    {{ partial "projects" (where .Site.RegularPages "Section" "projects") }}
     {{ partial "contact" }}
     <footer>
         
