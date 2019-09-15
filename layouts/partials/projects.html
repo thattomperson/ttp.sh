@@ -16,7 +16,7 @@
         <div class="card-image">
             <!-- hero image -->
             {{ $original := .Resources.GetMatch "logo.*" }}
-            <img src="{{ ($original.Fill "200x200").Permalink }}" alt="{{ .Title }}" />
+            <img src="{{ ($original.Fill "200x200").RelPermalink }}" alt="{{ .Title }}" />
         </div>
       </a>
     {{ end }}
