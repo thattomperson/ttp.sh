@@ -8,6 +8,7 @@
 }
 
 .card {
+    color: $primary;
     box-sizing: border-box;
     padding: 0px;
     background-color: $background;
@@ -20,6 +21,14 @@
     cursor: default;
     display: flex;
     height: 200px;
+
+    text-decoration: none;
+    cursor: pointer;
+    
+    @include dark {
+      color: $background;
+      background-color: $darkBackground;
+    }
 }
 .card:hover {
     top: -10px;

@@ -4,28 +4,21 @@
     <h2>Projects {{ ":computer:" | emojify }}</h2>
     <div class="cards">
     {{ range . }}
-        <div class="card observe">
-            <div class="card-content">
-                <h3>{{ .Title }}</h3>
-                {{ .Content }}
-            </div>
-            <div class="card-image">
-                <!-- hero image -->
-                {{ $original := .Resources.GetMatch "logo.*" }}
-                <img src="{{ ($original.Fill "200x200").Permalink }}" alt="{{ .Title }}" />
-                
-                <div class="card-image-overlay">
-                    <div class="card-image-overlay-icons" >
-                    {{ if .Params.github }}
-                        <a href="{{ .Params.github }}"><i class="fa-github"></i></a>
-                    {{ end }}
-                    {{ if .Params.link }}
-                        <a href="{{ .Params.link }}"><i class="fa-globe-americas"></i></a>
-                    {{ end }}
-                    </div>
-                </div>
-            </div>
+      {{ if .Params.link }} 
+      <a target="_blank" href="{{ .Params.link }}" class="card observe">
+      {{ else }}
+      <a class="card observe">
+      {{ end }}
+        <div class="card-content">
+            <h3>{{ .Title }}</h3>
+            {{ .Content }}
         </div>
+        <div class="card-image">
+            <!-- hero image -->
+            {{ $original := .Resources.GetMatch "logo.*" }}
+            <img src="{{ ($original.Fill "200x200").Permalink }}" alt="{{ .Title }}" />
+        </div>
+      </a>
     {{ end }}
     </div>
   </div>

@@ -1,0 +1,30 @@
+
+#contract h2::after,
+#contract h3::after,
+#contract h2::before,
+#contract h3::before
+{
+  content: none;
+}
+
+
+#contract {
+  font-size: 1.5em;
+  line-height: 1.5
+}
+
+#contract h3 {
+  margin-top: 1em;
+  margin-bottom: 0;
+  font-size: 1em;
+  text-transform: none;
+}
+
+@media print {
+  .background {
+    display: none;
+  }
+  #contract {
+    font-size: 1em;
+  }
+}

@@ -16,13 +16,23 @@
     small:    ( null, 40em ),
 ));
 
-@import 'components/fonts';
 @import 'components/background';
+@import 'components/contract';
 @import 'components/tooltip';
 @import 'components/section';
 @import 'components/headers';
 @import 'components/cards';
 @import 'components/404';
+
+.i-icon svg {
+  width: 1em;;
+  height: auto;
+  fill: $primary;
+
+  @include dark {
+    fill: $primaryLight;
+  }
+}
 
 body, html {
     padding: 0;

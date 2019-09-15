@@ -2,13 +2,13 @@
 Title: Hey, I'm Tom!
 social:
 - link: https://github.com/thattomperson
-  icon: github
+  icon: brands/github
   title: Github
 - link: "#contact-me"
-  icon: envelope
+  icon: solid/envelope
   title: Contact Me
 - link: https://twitter.com/thattomperson
-  icon: twitter
+  icon: brands/twitter
   title: Twitter
 ---
 Hey :wave: I'm Tom, I am a Web Develop and SysAdmin from Adelaide, Australia :earth_asia:.

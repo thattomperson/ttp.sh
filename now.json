@@ -3,6 +3,10 @@
   "name": "ttp-sh",
   "alias": "ttp.sh",
   "builds": [
-    { "src": "package.json", "use": "@now/static-build" }
+    {
+      "src": "build.sh",
+      "use": "@now/static-build",
+      "config": { "distDir": "public" }
+    }
   ]
 }

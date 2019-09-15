@@ -55,6 +55,13 @@
         width: 100%;
         height: auto;
 
+        .mouse {          
+          stroke: $primary;
+          @include dark {
+              stroke: $primaryLight;
+          }
+        }
+
         .scroll_wheel {
             animation-name: scroll;
             animation-duration: 1.5s;
