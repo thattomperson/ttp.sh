@@ -24,7 +24,7 @@ git checkout $HUGO_VERSION
 # Install deps. Why doesn't 'go install' do this?
 go get -d .
 # Build hugo.
-go install -i --tags extended
+GO111MODULE=on go install -i --tags extended
 # Back to the dir with your project source
 cd $CLONE_DIR
 
