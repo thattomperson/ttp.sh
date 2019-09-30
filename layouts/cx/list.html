@@ -5,11 +5,20 @@
     <h1>{{ .Title }}</h1>
     {{ range sort .Pages "Date" "asc" }}
       {{ if .Params.headless }}
-        <h2>{{ .Title }} - {{ .Date }}</h2>
+        <h2>{{ .Title }} - {{ .Date.Format "02 / 01 / 2006" }}</h2>
+        {{ if .Params.purchases }}
+        <table>
+          {{ $price := 0 }}
+          {{ range .Params.purchases }}
+          {{ $price = add $price .price }}
+          <tr><td>{{ .name }}</td><td>${{ lang.NumFmt 2 .price }}</td></tr>
+          {{ end }}
+          <tr><th>Total</th><th>${{ lang.NumFmt 2 $price }}</th></tr>
+        </table>
+        {{ end}}
         {{ .Content }}
       {{ end }}
     {{ end }}
-
     {{ .Content }}
   </div>
 </div>
