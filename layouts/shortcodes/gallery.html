@@ -1,8 +1,8 @@
 
 {{ $glob := .Get 0 | default "*" }}
 {{ $images := .Page.Resources.Match $glob }}
+<div class="gallery">
 {{ range $images }}
-  <figure>
-    <img src="{{ .RelPermalink }}">
-  </figure>
+  <img src="{{ .RelPermalink }}">
 {{ end }}
+</div>
