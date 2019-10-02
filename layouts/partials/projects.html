@@ -5,7 +5,12 @@
     <div class="cards">
     {{ range . }}
       {{ if .Params.link }} 
-      <a target="_blank" href="{{ .Params.link }}" class="card observe">
+      <a
+        {{ $external := .Params.external | default true }}
+        {{ if $external }}
+        target="_blank"
+        {{ end }}
+        href="{{ .Params.link }}" class="card observe">
       {{ else }}
       <a class="card observe">
       {{ end }}

@@ -7,7 +7,7 @@ purchases:
     price: 5.50
 ---
 
-{{< figure src="/cx/in-the-beginning/transport.jpg" >}}
+{{< gallery >}}
 
 Ullamco deserunt veniam magna amet anim sit veniam tempor nostrud. Irure amet est pariatur esse culpa irure mollit eiusmod. Laborum aute officia adipisicing labore ut culpa id magna tempor nisi. Nisi minim labore sint ex ut ipsum nisi non excepteur laborum cillum. Tempor ad enim tempor adipisicing consectetur reprehenderit eu. Id irure laboris est ea qui consectetur nisi voluptate eiusmod.
 
