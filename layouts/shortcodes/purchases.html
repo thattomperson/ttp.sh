@@ -1,8 +1,11 @@
-<table class="purchases">
-  {{ $price := 0 }}
-  {{ range .Page.Params.purchases }}
-  {{ $price = add $price .price }}
-  <tr><td>{{ .name }}</td><td>${{ lang.NumFmt 2 .price }}</td></tr>
-  {{ end }}
-  <tr><th>Total</th><th>${{ lang.NumFmt 2 $price }}</th></tr>
-</table>
+
+<div class="purchases">
+  <table>
+    {{ $price := 0 }}
+    {{ range .Page.Params.purchases }}
+    {{ $price = add $price .price }}
+    <tr><td>{{ .name }}</td><td>${{ lang.NumFmt 2 .price }}</td></tr>
+    {{ end }}
+    <tr><th>Total</th><th>${{ lang.NumFmt 2 $price }}</th></tr>
+  </table>
+</div>

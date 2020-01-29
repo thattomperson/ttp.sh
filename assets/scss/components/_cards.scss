@@ -7,8 +7,10 @@
     justify-items: center;
 }
 
+
+
 .card {
-    color: $primary;
+    position: relative;
     box-sizing: border-box;
     padding: 0px;
     background-color: $background;
@@ -19,15 +21,37 @@
     top: 0;
     width: 100%;
     cursor: default;
-    display: flex;
+    
     height: 200px;
 
-    text-decoration: none;
+    
     cursor: pointer;
     
     @include dark {
-      color: $background;
       background-color: $darkBackground;
+    }
+
+    a {
+      display: flex;
+      text-decoration: none;
+      color: $primary;
+    
+      @include dark {
+        color: $background;
+    
+      }
+    }
+
+    .github {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 10px;
+
+      svg {
+        height: 30px;
+        width: 30px;
+      }
     }
 }
 .card:hover {

@@ -75,13 +75,14 @@ footer {
 .cx section .cx-content {
   display: grid;
   grid-template-rows: 1fr repeat(auto-fill, auto);
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 3fr;
   grid-template-areas:
       "gallery gallery"
       "sidebar content";
   grid-auto-flow: initial;
   grid-auto-rows: initial;
   grid-auto-columns: initial;
+  gap: 50px 50px;
 
   .gallery {
     // full width
@@ -91,6 +92,7 @@ footer {
     grid: [row1-start] "main p1" 1fr [row1-end]
           [row2-start] "main p2" 1fr [row2-end]
           / 2fr 1fr;
+    gap: 10px 10px;
     
     img {
       width: 100%;
@@ -105,6 +107,10 @@ footer {
     // 1/5th
     grid-area: sidebar;
     text-align: left;
+
+    table tr {
+      
+    }
   }
   
   .cx-body {

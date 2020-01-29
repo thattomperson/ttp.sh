@@ -4,26 +4,39 @@
     <h2>Projects {{ ":computer:" | emojify }}</h2>
     <div class="cards">
     {{ range . }}
-      {{ if .Params.link }} 
-      <a
-        {{ $external := .Params.external | default true }}
-        {{ if $external }}
-        target="_blank"
+      <div class="card observe">
+        {{ if .Params.link }} 
+        <a
+          {{ $external := .Params.external | default true }}
+          {{ if $external }}
+          target="_blank"
+          {{ end }}
+          href="{{ .Params.link }}"
+        >
+        {{ else }}
+        <a>
         {{ end }}
-        href="{{ .Params.link }}" class="card observe">
-      {{ else }}
-      <a class="card observe">
-      {{ end }}
-        <div class="card-content">
-            <h3>{{ .Title }}</h3>
-            {{ .Content }}
-        </div>
-        <div class="card-image">
-            <!-- hero image -->
-            {{ $original := .Resources.GetMatch "logo.*" }}
-            <img src="{{ ($original.Fill "200x200").RelPermalink }}" alt="{{ .Title }}" />
-        </div>
-      </a>
+          <div class="card-content">
+              <h3>{{ .Title }}</h3>
+              {{ .Content }}
+          </div>
+          {{ $original := .Resources.GetMatch "logo.*" }}
+          {{ with $original }}
+          <div class="card-image">
+              <!-- hero image -->
+              
+              <img src="{{ (.Fill "200x200").RelPermalink }}" alt="{{ .Title }}" />
+          </div>
+          {{ end }}
+        </a>
+
+        {{ if .Params.github }}
+        <a href="{{ relURL .Params.github }}" target="_blank" class="github" tooltip="Github">
+          {{- $icon := resources.Get "fontawesome/brands/github.svg" -}}
+          <i class="i-icon">{{ $icon.Content | safeHTML }}</i>
+        </a>
+        {{ end }}
+      </div>
     {{ end }}
     </div>
   </div>
