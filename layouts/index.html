@@ -33,8 +33,8 @@
                 <div>
                 {{ .Content }}
                 </div>
-                {{ $snowy := resources.Get "snowy.png" }}
-                <img src="{{ ($snowy.Fill "300x300").Permalink }}">
+                {{ $profile := resources.Get "profile.jpg" }}
+                <img src="{{ ($profile.Fill "600x600").RelPermalink }}">
             </div>
         </div>
     </div>

@@ -11,8 +11,12 @@ social:
   icon: brands/twitter
   title: Twitter
 ---
-Hey :wave: I'm Tom, I am a Web Develop and SysAdmin from Adelaide, Australia :earth_asia:.
+Hey :wave: I'm Tom, I am a Web Developer based in Adelaide, Australia :earth_asia:.
 
-I'm a gamer, programmer, maker, skiier, amateur cook, and coffee addict.
+I have diverse skills in Javascript, PHP, Docker, and many AWS services.
 
-You can go and check out some of my [Projects](#projects) that I have worked on, and if you would like me to work on a website for you please feel free to [contact me](#contact-me) and I'll get back to you.
+My current favourite pass time is playing around with the [Serverless](http://serverless.com/) for personal projects.
+
+I'm a gamer, skiier, amateur cook, and coffee addict.
+
+You can go and check out some of my [Projects](#projects) that I have worked on, and if you would like me to work on a website for you please feel free to [contact me](#contact-me) and we can catch up over a coffee.
