@@ -1,0 +1,7 @@
+name: ttp-sh
+website:
+  component: '@serverless/website'
+  inputs:
+    code:
+      src: __sapper__/export
+      hook: yarn export
