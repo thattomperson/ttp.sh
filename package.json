@@ -10,7 +10,7 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run",
-    "deploy": "sls",
+    "deploy": "sls"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
