@@ -2,7 +2,6 @@ org: thattomperson
 service: ttp-sh
 app: ttp-sh
 
-name: ttp-sh
 website:
   component: '@serverless/website'
   inputs:
