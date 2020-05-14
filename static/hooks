@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+
+const https = require('https');
+const path = require('path');
+const fs = require('fs');
+
+const gistId = '7a8127ac306bb2e58c24ba16a521b621';
+
+function get(url) {
+  let content = ''
+  return new Promise((resolve, reject) => {
+    https.get(url, {
+      headers: {
+        "User-Agent": "node-git-hooks-downloader"
+      }
+    }, (res) => {
+      res.on('data', (data) => {
+        content += data;
+      })
+  
+      res.on('close', () => {
+        resolve(content)
+      })
+
+      res.on('error', reject)
+    })
+  })
+}
+
+function write(file) {
+  return new Promise(async (resolve, reject) => {
+    const filepath = path.join('.git', 'hooks', file.filename)
+    let content = file.content
+    if (file.truncated) {
+      content = await get(file.raw_url)
+    }
+
+    fs.writeFileSync(filepath, content)
+    fs.chmodSync(filepath, '775')
+
+    resolve()
+  })
+}
+  
+get(`https://api.github.com/gists/${gistId}`)
+  .then(content => JSON.parse(content))
+  .then(res => res.files)
+  .then(files => Promise.all(Object.values(files).map(write)))
