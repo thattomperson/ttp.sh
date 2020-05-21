@@ -36,7 +36,9 @@ function write(file) {
     }
 
     fs.writeFileSync(filepath, content)
-    fs.chmodSync(filepath, '775')
+    if (file.language === 'Shell') {
+      fs.chmodSync(filepath, '775')
+    }
 
     resolve()
   })
