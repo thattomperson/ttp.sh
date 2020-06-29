@@ -3,6 +3,11 @@
 const https = require('https');
 const path = require('path');
 const fs = require('fs');
+const util = require('util')
+const mkdir = util.promisify(fs.mkdir)
+const writeFile = util.promisify(fs.writeFile)
+const chmod = util.promisify(fs.chmod)
+
 
 const gistId = '7a8127ac306bb2e58c24ba16a521b621';
 
@@ -17,7 +22,7 @@ function get(url) {
       res.on('data', (data) => {
         content += data;
       })
-  
+
       res.on('close', () => {
         resolve(content)
       })
@@ -27,23 +32,43 @@ function get(url) {
   })
 }
 
-function write(file) {
-  return new Promise(async (resolve, reject) => {
-    const filepath = path.join('.git', 'hooks', file.filename)
-    let content = file.content
-    if (file.truncated) {
-      content = await get(file.raw_url)
-    }
+async function writeHook(file, content) {
+  const filepath = path.join('.git', 'hooks', file.filename.substr('hook-'.length))
 
-    fs.writeFileSync(filepath, content)
-    if (file.language === 'Shell') {
-      fs.chmodSync(filepath, '775')
-    }
-
-    resolve()
-  })
+  fs.writeFileSync(filepath, content)
+  fs.chmodSync(filepath, '775')
+  return
 }
-  
+
+async function writeScript(file, content) {
+  await mkdir(path.join('.git', 'scripts'), { recursive: true })
+
+  const filepath = path.join('.git', 'scripts', file.filename.substr('script-'.length))
+
+  await writeFile(filepath, content)
+  await chmodSync(filepath, '775')
+}
+
+async function writeFile(file, content) {
+  const filepath = path.join('.git', file.filename)
+  await writeFile(filepath, content)
+}
+
+async function write(file) {
+  let content = file.content
+  if (file.truncated) {
+    content = await get(file.raw_url)
+  }
+
+  if (file.filename.startsWith('hook-')) {
+    return writeHook(file, content)
+  }
+  if (file.filename.startsWith('script-')) {
+    return writeScript(file, content)
+  }
+  return writeFile(file, content)
+}
+
 get(`https://api.github.com/gists/${gistId}`)
   .then(content => JSON.parse(content))
   .then(res => res.files)
