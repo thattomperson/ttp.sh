@@ -8,7 +8,6 @@ const mkdir = util.promisify(fs.mkdir)
 const writeFile = util.promisify(fs.writeFile)
 const chmod = util.promisify(fs.chmod)
 
-
 const gistId = '7a8127ac306bb2e58c24ba16a521b621';
 
 function get(url) {
@@ -35,18 +34,16 @@ function get(url) {
 async function writeHook(file, content) {
   const filepath = path.join('.git', 'hooks', file.filename.substr('hook-'.length))
 
-  fs.writeFileSync(filepath, content)
-  fs.chmodSync(filepath, '775')
-  return
+  await writeFile(filepath, content)
+  await chmod(filepath, '775')
 }
 
 async function writeScript(file, content) {
-  await mkdir(path.join('.git', 'scripts'), { recursive: true })
-
   const filepath = path.join('.git', 'scripts', file.filename.substr('script-'.length))
 
+  await mkdir(path.join('.git', 'scripts'), { recursive: true })
   await writeFile(filepath, content)
-  await chmodSync(filepath, '775')
+  await chmod(filepath, '775')
 }
 
 async function writeFile(file, content) {
