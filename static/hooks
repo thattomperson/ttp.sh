@@ -3,111 +3,109 @@
 const https = require('https');
 const path = require('path');
 const fs = require('fs');
-const util = require('util')
-const mkdir = util.promisify(fs.mkdir)
-const writeFile = util.promisify(fs.writeFile)
-const chmod = util.promisify(fs.chmod)
+const util = require('util');
+const mkdir = util.promisify(fs.mkdir);
+const writeFile = util.promisify(fs.writeFile);
+const chmod = util.promisify(fs.chmod);
 
 const gistId = '7a8127ac306bb2e58c24ba16a521b621';
 
 function get(url) {
-  let content = ''
+  let content = '';
   return new Promise((resolve, reject) => {
-    https.get(url, {
-      headers: {
-        "User-Agent": "node-git-hooks-downloader"
+    https.get(
+      url,
+      {
+        headers: {
+          'User-Agent': 'node-git-hooks-downloader',
+        },
+      },
+      (res) => {
+        res.on('data', (data) => {
+          content += data;
+        });
+
+        res.on('close', () => {
+          resolve(content);
+        });
+
+        res.on('error', reject);
       }
-    }, (res) => {
-      res.on('data', (data) => {
-        content += data;
-      })
-
-      res.on('close', () => {
-        resolve(content)
-      })
-
-      res.on('error', reject)
-    })
-  })
-}
-
-async function writeHook(file, content) {
-  const filepath = path.join('.git', 'hooks', file.filename.substr('hook-'.length))
-
-  await writeFile(filepath, content)
-  await chmod(filepath, '775')
-}
-
-async function writeScript(file, content) {
-  const filepath = path.join('.git', 'scripts', file.filename.substr('script-'.length))
-
-  await mkdir(path.join('.git', 'scripts'), { recursive: true })
-  await writeFile(filepath, content)
-  await chmod(filepath, '775')
+    );
+  });
 }
 
 async function write(filepath, file) {
-  let content = file.content
+  let content = file.content;
   if (file.truncated) {
-    content = await get(file.raw_url)
+    content = await get(file.raw_url);
   }
 
-  return writeFile(filepath, content)
+  return writeFile(filepath, content);
 }
 
 function groupHooks(files) {
   const groups = {
     hooks: {},
     ungrouped: {},
-  }
+  };
 
   Object.values(files).forEach((file) => {
-    let matches = /\[(.+?)\]-(.*)/.exec(file.filename)
+    let matches = /\[(.+?)\]-(.*)/.exec(file.filename);
     if (matches) {
-      groups.hooks[matches[1]] = groups.hooks[matches[1]] || {}
-      groups.hooks[matches[1]][matches[2]] = file
+      groups.hooks[matches[1]] = groups.hooks[matches[1]] || {};
+      groups.hooks[matches[1]][matches[2]] = file;
     } else {
-      groups.ungrouped[file.filename] = file
+      groups.ungrouped[file.filename] = file;
     }
-  })
+  });
 
-  return groups
+  return groups;
 }
 
 async function writeAll(groups) {
-  await Promise.all(Object.keys(groups.hooks).map(async hook => {
-    await Promise.all(Object.keys(groups.hooks[hook]).map(async filename => {
-      const folder = path.join('.git', 'hooks', 'hooks.d', hook)
+  await Promise.all(
+    Object.keys(groups.hooks).map(async (hook) => {
+      await Promise.all(
+        Object.keys(groups.hooks[hook]).map(async (filename) => {
+          const folder = path.join('.git', 'hooks', 'hooks.d', hook);
+          const filepath = path.join(folder, filename);
+
+          await mkdir(folder, { recursive: true });
+          await write(filepath, groups.hooks[hook][filename]);
+          await chmod(filepath, '775');
+        })
+      );
+
+      const filepath = path.join('.git', 'hooks', hook);
+      const content = Object.keys(groups.hooks[hook]).reduce(
+        (contents, filename) => {
+          const folder = path.join('.git', 'hooks', 'hooks.d', hook);
+          const filepath = path.join(folder, filename);
+
+          return `${contents}\n${filepath}\n`;
+        },
+        '#!/usr/bin/env sh\nset -e\n\n'
+      );
+
+      await writeFile(filepath, content);
+      await chmod(filepath, '775');
+    })
+  );
+
+  await Promise.all(
+    Object.keys(groups.ungrouped).map(async (filename) => {
+      const folder = path.join('.git');
       const filepath = path.join(folder, filename);
 
-      await mkdir(folder, { recursive: true })
-      await write(filepath, groups.hooks[hook][filename])
-      await chmod(filepath, '775')
-    }))
-
-    const filepath = path.join('.git', 'hooks', hook)
-    const content = Object.keys(groups.hooks[hook]).reduce((contents, filename) => {
-      const folder = path.join('.git', 'hooks', 'hooks.d', hook)
-      const filepath = path.join(folder, filename);
-
-      return `${contents}\n${filepath}\n`
-    }, '#!/usr/bin/env sh\nset -e\n\n')
-
-    await writeFile(filepath, content)
-    await chmod(filepath, '775')
-  }));
-
-  await Promise.all(Object.keys(groups.ungrouped).map(async filename => {
-    const folder = path.join('.git', filename)
-    const filepath = path.join(folder, filename);
-
-    await mkdir(folder, { recursive: true })
-    await write(filepath, groups.ungrouped[filename])
-  }))
+      await mkdir(folder, { recursive: true });
+      await write(filepath, groups.ungrouped[filename]);
+    })
+  );
 }
 
 get(`https://api.github.com/gists/${gistId}`)
-  .then(content => JSON.parse(content))
-  .then(res => res.files)
+  .then((content) => JSON.parse(content))
+  .then((res) => res.files)
   .then(groupHooks)
-  .then(writeAll)
+  .then(writeAll);
