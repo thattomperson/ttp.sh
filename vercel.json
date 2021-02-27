@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/:slug/install", "destination": "/api/projects/install" }
+  ]
+}
