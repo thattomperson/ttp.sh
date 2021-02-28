@@ -1,0 +1,9 @@
+.image {
+  position: relative;
+  left: 0;
+}
+
+.card:hover .image {
+  transform: scale(1.1);
+  left: -20px;
+}
