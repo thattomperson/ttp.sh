@@ -1,19 +1,18 @@
-import Head from 'next/head'
 import Card from '../components/Card'
+import Heading from '../components/Heading'
+import Page from '../components/Page'
 
 export default function Home({ projects }) {
   return (
-    <>
-    <div className="flex flex-col lg:flex-row container mx-auto">
+    <Page>
       <div className="w-full relative lg:w-1/2 flex-col flex-shrink-0 flex justify-center lg:h-screen space-y-2">
         <div className="lg:fixed p-20 w-full lg:w-1/2">
-          <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-yellow-400 text-7xl font-bold">Hey,<br />I'm Tom</h1>
+          <Heading>Hey,<br />I'm Tom</Heading>
           <p className="text-gray-300 text-2xl">
             I'm a software engineer based in<wbr />{' '}
             <a className="underline" target="_blank" href="https://www.google.com/maps/place/Adelaide+SA/@-34.9998826,138.330981">Adeliade,&nbsp;Australia</a>
           </p>
         </div>
-
       </div>
       <div className="w-full lg:w-1/2 flex-shrink-0 p-7 space-y-4 sm:space-y-0 lg:space-y-4 sm:space-x-4 lg:space-x-0 flex flex-col sm:flex-row lg:flex-col">
         <div className="w-full space-y-4">
@@ -26,11 +25,7 @@ export default function Home({ projects }) {
           { projects.map(project => <Card key={project.title} {...project} />)}
         </div>
       </div>
-    </div>
-    <div className="bg-gray-900 h-16 text-gray-200 text-center">
-      <span>Designed and Built by Thomas Albrighton</span>
-    </div>
-    </>
+    </Page>
   )
 }
 

@@ -1,7 +1,4 @@
-import Image from 'next/image'
 import styles from './Card.module.css'
-
-console.log(styles)
 
 interface CardProps {
   title: string
