@@ -16,10 +16,6 @@ export default function Home() {
       <div className="w-full relative lg:w-2/5 flex-col flex justify-center lg:h-screen space-y-2">
         <div className="lg:fixed p-20 lg:pr-0 w-full lg:w-2/5">
           <Heading>The<br />Contract</Heading>
-          {/* <p className="text-gray-300 text-2xl">
-            I'm a software engineer based in<wbr />{' '}
-            <a className="underline" target="_blank" href="https://www.google.com/maps/place/Adelaide+SA/@-34.9998826,138.330981">Adeliade,&nbsp;Australia</a>
-          </p> */}
         </div>
       </div>
       <div className="w-full lg:w-3/5 p-7 space-y-4 flex flex-col text-gray-200">
