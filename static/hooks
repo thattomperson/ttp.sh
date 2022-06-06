@@ -4,6 +4,7 @@ const https = require('https');
 const path = require('path');
 const fs = require('fs');
 const util = require('util');
+const spawn = require('child_process').spawnSync;
 const mkdir = util.promisify(fs.mkdir);
 const writeFile = util.promisify(fs.writeFile);
 const chmod = util.promisify(fs.chmod);
@@ -35,13 +36,28 @@ function get(url) {
   });
 }
 
-async function write(filepath, file) {
-  let content = file.content;
-  if (file.truncated) {
-    content = await get(file.raw_url);
-  }
+async function getContent({ truncated, content, raw_url }) {
+  return truncated ? await get(raw_url) : content;
+}
 
+async function write(filepath, file) {
+  const content = await getContent(file);
   return writeFile(filepath, content);
+}
+
+async function writeAliases(aliases) {
+  const content = await getContent(aliases);
+
+  const lines = content.split('\n');
+  lines.map(line => {
+    const [name, body] = line.split(/=(.*)/s).map(p => p.trim());
+    console.log(`\tAdding ${name} alias`);
+    return exec('git', 'config', '--replace-all', `alias.${name}`, body);
+  })
+}
+
+function exec(command, ...args) {
+  spawn(command, args)
 }
 
 function groupHooks(files) {
@@ -55,6 +71,8 @@ function groupHooks(files) {
     if (matches) {
       groups.hooks[matches[1]] = groups.hooks[matches[1]] || {};
       groups.hooks[matches[1]][matches[2]] = file;
+    } else if (file.filename === 'aliases') {
+      groups.aliases = file
     } else {
       groups.ungrouped[file.filename] = file;
     }
@@ -64,10 +82,12 @@ function groupHooks(files) {
 }
 
 async function writeAll(groups) {
+  console.log("Writing hooks")
   await Promise.all(
     Object.keys(groups.hooks).map(async (hook) => {
       await Promise.all(
         Object.keys(groups.hooks[hook]).map(async (filename) => {
+          console.log(`\tWriting ${hook} ${filename}`)
           const folder = path.join('.git', 'hooks', 'hooks.d', hook);
           const filepath = path.join(folder, filename);
 
@@ -93,10 +113,16 @@ async function writeAll(groups) {
     })
   );
 
+  console.log('Writing aliases');
+  await writeAliases(groups.aliases)
+
+  console.log('Writing additional files');
   await Promise.all(
     Object.keys(groups.ungrouped).map(async (filename) => {
+      console.log(`\tWriting ${filename}`)
       const folder = path.join('.git');
       const filepath = path.join(folder, filename);
+
 
       await mkdir(folder, { recursive: true });
       await write(filepath, groups.ungrouped[filename]);
