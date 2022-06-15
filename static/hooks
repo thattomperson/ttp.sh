@@ -100,12 +100,12 @@ async function writeAll(groups) {
       const filepath = path.join('.git', 'hooks', hook);
       const content = Object.keys(groups.hooks[hook]).reduce(
         (contents, filename) => {
-          const folder = path.join('.git', 'hooks', 'hooks.d', hook);
+          const folder = path.join('hooks', 'hooks.d', hook);
           const filepath = path.join(folder, filename);
 
-          return `${contents}\n${filepath}\n`;
+          return `${contents}\n$GIT_COMMON_DIR/${filepath}\n`;
         },
-        '#!/usr/bin/env sh\nset -e\n\n'
+        '#!/usr/bin/env sh\nset -e\n\nGIT_COMMON_DIR=$(git rev-parse --git-common-dir);\n\n'
       );
 
       await writeFile(filepath, content);
